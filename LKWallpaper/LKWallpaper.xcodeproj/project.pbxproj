@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2509F87C1ED19ED900279F05 /* LKMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F87B1ED19ED900279F05 /* LKMainTabBarController.m */; };
+		2509F87F1ED19F6A00279F05 /* LKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F87E1ED19F6A00279F05 /* LKHomeViewController.m */; };
+		2509F8831ED19FE000279F05 /* LKCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F8821ED19FE000279F05 /* LKCollectViewController.m */; };
+		2509F8871ED1A02600279F05 /* LKDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F8861ED1A02600279F05 /* LKDetailsViewController.m */; };
+		2509F9011ED2B4C000279F05 /* LKHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F9001ED2B4C000279F05 /* LKHomeCollectionViewCell.m */; };
+		2509F9051ED2DCC700279F05 /* LKWallpaper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F9041ED2DCC700279F05 /* LKWallpaper.m */; };
+		2509F9091ED2DD7300279F05 /* LKMianTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F9081ED2DD7300279F05 /* LKMianTabBar.m */; };
+		2509F90B1ED30CB000279F05 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2509F90A1ED30CB000279F05 /* data.json */; };
+		2509F90E1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F90D1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m */; };
+		257848151ED56FDA00379799 /* LKHomeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257848141ED56FDA00379799 /* LKHomeDetailsViewController.m */; };
+		257848191ED56FF600379799 /* LKHomeDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 257848181ED56FF600379799 /* LKHomeDetailsView.m */; };
+		25F799151ED1989E004E8361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F799141ED1989E004E8361 /* main.m */; };
+		25F799181ED1989E004E8361 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F799171ED1989E004E8361 /* AppDelegate.m */; };
+		25F799201ED1989E004E8361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F7991F1ED1989E004E8361 /* Assets.xcassets */; };
+		25F799231ED1989E004E8361 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F799211ED1989E004E8361 /* LaunchScreen.storyboard */; };
+		3C2C940B1179E9B380197705 /* libPods-LKWallpaper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE92DA49481ED20191103C4F /* libPods-LKWallpaper.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2509F8761ED19C0000279F05 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		2509F87A1ED19ED900279F05 /* LKMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMainTabBarController.h; sourceTree = "<group>"; };
+		2509F87B1ED19ED900279F05 /* LKMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMainTabBarController.m; sourceTree = "<group>"; };
+		2509F87D1ED19F6A00279F05 /* LKHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeViewController.h; sourceTree = "<group>"; };
+		2509F87E1ED19F6A00279F05 /* LKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeViewController.m; sourceTree = "<group>"; };
+		2509F8811ED19FE000279F05 /* LKCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCollectViewController.h; sourceTree = "<group>"; };
+		2509F8821ED19FE000279F05 /* LKCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCollectViewController.m; sourceTree = "<group>"; };
+		2509F8851ED1A02600279F05 /* LKDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDetailsViewController.h; sourceTree = "<group>"; };
+		2509F8861ED1A02600279F05 /* LKDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDetailsViewController.m; sourceTree = "<group>"; };
+		2509F8FF1ED2B4C000279F05 /* LKHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeCollectionViewCell.h; sourceTree = "<group>"; };
+		2509F9001ED2B4C000279F05 /* LKHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		2509F9031ED2DCC700279F05 /* LKWallpaper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKWallpaper.h; sourceTree = "<group>"; };
+		2509F9041ED2DCC700279F05 /* LKWallpaper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKWallpaper.m; sourceTree = "<group>"; };
+		2509F9071ED2DD7300279F05 /* LKMianTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMianTabBar.h; sourceTree = "<group>"; };
+		2509F9081ED2DD7300279F05 /* LKMianTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMianTabBar.m; sourceTree = "<group>"; };
+		2509F90A1ED30CB000279F05 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		2509F90C1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		2509F90D1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		257848131ED56FDA00379799 /* LKHomeDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeDetailsViewController.h; sourceTree = "<group>"; };
+		257848141ED56FDA00379799 /* LKHomeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeDetailsViewController.m; sourceTree = "<group>"; };
+		257848171ED56FF600379799 /* LKHomeDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeDetailsView.h; sourceTree = "<group>"; };
+		257848181ED56FF600379799 /* LKHomeDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeDetailsView.m; sourceTree = "<group>"; };
+		25F799101ED1989E004E8361 /* LKWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LKWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25F799141ED1989E004E8361 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		25F799161ED1989E004E8361 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		25F799171ED1989E004E8361 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		25F7991F1ED1989E004E8361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25F799221ED1989E004E8361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		25F799241ED1989E004E8361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43ADA6D14F2893B22AE3BD54 /* Pods-LKWallpaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LKWallpaper.release.xcconfig"; path = "Pods/Target Support Files/Pods-LKWallpaper/Pods-LKWallpaper.release.xcconfig"; sourceTree = "<group>"; };
+		5FEC673346823586357AC6BA /* Pods-LKWallpaper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LKWallpaper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LKWallpaper/Pods-LKWallpaper.debug.xcconfig"; sourceTree = "<group>"; };
+		EE92DA49481ED20191103C4F /* libPods-LKWallpaper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LKWallpaper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25F7990D1ED1989E004E8361 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C2C940B1179E9B380197705 /* libPods-LKWallpaper.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2509F8771ED19D0D00279F05 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2509F9021ED2DCAF00279F05 /* Models */,
+				2509F8791ED19DF500279F05 /* Main */,
+				2509F8781ED19D0D00279F05 /* Home */,
+				2509F8801ED19FC800279F05 /* Collect */,
+				2509F8841ED1A00700279F05 /* Details */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2509F8781ED19D0D00279F05 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				257848121ED56FD900379799 /* HomeDetails */,
+				2509F8FE1ED2B4B000279F05 /* View */,
+				2509F87D1ED19F6A00279F05 /* LKHomeViewController.h */,
+				2509F87E1ED19F6A00279F05 /* LKHomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2509F8791ED19DF500279F05 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2509F9061ED2DD7300279F05 /* View */,
+				2509F87A1ED19ED900279F05 /* LKMainTabBarController.h */,
+				2509F87B1ED19ED900279F05 /* LKMainTabBarController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2509F8801ED19FC800279F05 /* Collect */ = {
+			isa = PBXGroup;
+			children = (
+				2509F8811ED19FE000279F05 /* LKCollectViewController.h */,
+				2509F8821ED19FE000279F05 /* LKCollectViewController.m */,
+			);
+			path = Collect;
+			sourceTree = "<group>";
+		};
+		2509F8841ED1A00700279F05 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				2509F8851ED1A02600279F05 /* LKDetailsViewController.h */,
+				2509F8861ED1A02600279F05 /* LKDetailsViewController.m */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		2509F8FE1ED2B4B000279F05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2509F90C1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.h */,
+				2509F90D1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m */,
+				2509F8FF1ED2B4C000279F05 /* LKHomeCollectionViewCell.h */,
+				2509F9001ED2B4C000279F05 /* LKHomeCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2509F9021ED2DCAF00279F05 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2509F9031ED2DCC700279F05 /* LKWallpaper.h */,
+				2509F9041ED2DCC700279F05 /* LKWallpaper.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2509F9061ED2DD7300279F05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2509F9071ED2DD7300279F05 /* LKMianTabBar.h */,
+				2509F9081ED2DD7300279F05 /* LKMianTabBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		257848121ED56FD900379799 /* HomeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				257848161ED56FE500379799 /* View */,
+				257848131ED56FDA00379799 /* LKHomeDetailsViewController.h */,
+				257848141ED56FDA00379799 /* LKHomeDetailsViewController.m */,
+			);
+			path = HomeDetails;
+			sourceTree = "<group>";
+		};
+		257848161ED56FE500379799 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				257848171ED56FF600379799 /* LKHomeDetailsView.h */,
+				257848181ED56FF600379799 /* LKHomeDetailsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		25F799071ED1989E004E8361 = {
+			isa = PBXGroup;
+			children = (
+				25F799121ED1989E004E8361 /* LKWallpaper */,
+				25F799111ED1989E004E8361 /* Products */,
+				964C4F05F5F2B7F64A801D6A /* Pods */,
+				2E8D34D61057EFC024E214FB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		25F799111ED1989E004E8361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25F799101ED1989E004E8361 /* LKWallpaper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25F799121ED1989E004E8361 /* LKWallpaper */ = {
+			isa = PBXGroup;
+			children = (
+				2509F8771ED19D0D00279F05 /* Classes */,
+				25F799161ED1989E004E8361 /* AppDelegate.h */,
+				25F799171ED1989E004E8361 /* AppDelegate.m */,
+				25F799131ED1989E004E8361 /* Supporting Files */,
+			);
+			path = LKWallpaper;
+			sourceTree = "<group>";
+		};
+		25F799131ED1989E004E8361 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25F7991F1ED1989E004E8361 /* Assets.xcassets */,
+				25F799211ED1989E004E8361 /* LaunchScreen.storyboard */,
+				25F799241ED1989E004E8361 /* Info.plist */,
+				25F799141ED1989E004E8361 /* main.m */,
+				2509F8761ED19C0000279F05 /* PrefixHeader.pch */,
+				2509F90A1ED30CB000279F05 /* data.json */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E8D34D61057EFC024E214FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE92DA49481ED20191103C4F /* libPods-LKWallpaper.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		964C4F05F5F2B7F64A801D6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5FEC673346823586357AC6BA /* Pods-LKWallpaper.debug.xcconfig */,
+				43ADA6D14F2893B22AE3BD54 /* Pods-LKWallpaper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25F7990F1ED1989E004E8361 /* LKWallpaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25F799271ED1989E004E8361 /* Build configuration list for PBXNativeTarget "LKWallpaper" */;
+			buildPhases = (
+				30DF05A6E7E8DF3725061AA2 /* [CP] Check Pods Manifest.lock */,
+				25F7990C1ED1989E004E8361 /* Sources */,
+				25F7990D1ED1989E004E8361 /* Frameworks */,
+				25F7990E1ED1989E004E8361 /* Resources */,
+				C937E5B616C810BA22D284DA /* [CP] Embed Pods Frameworks */,
+				E1D65B28552A52CEAE555072 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LKWallpaper;
+			productName = LKWallpaper;
+			productReference = 25F799101ED1989E004E8361 /* LKWallpaper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25F799081ED1989E004E8361 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LK;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = lukj;
+				TargetAttributes = {
+					25F7990F1ED1989E004E8361 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = NQKQNX8QS9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 25F7990B1ED1989E004E8361 /* Build configuration list for PBXProject "LKWallpaper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25F799071ED1989E004E8361;
+			productRefGroup = 25F799111ED1989E004E8361 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25F7990F1ED1989E004E8361 /* LKWallpaper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25F7990E1ED1989E004E8361 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25F799231ED1989E004E8361 /* LaunchScreen.storyboard in Resources */,
+				2509F90B1ED30CB000279F05 /* data.json in Resources */,
+				25F799201ED1989E004E8361 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30DF05A6E7E8DF3725061AA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C937E5B616C810BA22D284DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LKWallpaper/Pods-LKWallpaper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1D65B28552A52CEAE555072 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LKWallpaper/Pods-LKWallpaper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25F7990C1ED1989E004E8361 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2509F90E1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m in Sources */,
+				2509F9091ED2DD7300279F05 /* LKMianTabBar.m in Sources */,
+				2509F9051ED2DCC700279F05 /* LKWallpaper.m in Sources */,
+				257848191ED56FF600379799 /* LKHomeDetailsView.m in Sources */,
+				2509F9011ED2B4C000279F05 /* LKHomeCollectionViewCell.m in Sources */,
+				2509F87F1ED19F6A00279F05 /* LKHomeViewController.m in Sources */,
+				2509F8831ED19FE000279F05 /* LKCollectViewController.m in Sources */,
+				2509F8871ED1A02600279F05 /* LKDetailsViewController.m in Sources */,
+				25F799181ED1989E004E8361 /* AppDelegate.m in Sources */,
+				2509F87C1ED19ED900279F05 /* LKMainTabBarController.m in Sources */,
+				257848151ED56FDA00379799 /* LKHomeDetailsViewController.m in Sources */,
+				25F799151ED1989E004E8361 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		25F799211ED1989E004E8361 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25F799221ED1989E004E8361 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25F799251ED1989E004E8361 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		25F799261ED1989E004E8361 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25F799281ED1989E004E8361 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FEC673346823586357AC6BA /* Pods-LKWallpaper.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NQKQNX8QS9;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
+				INFOPLIST_FILE = LKWallpaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukj.LKWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		25F799291ED1989E004E8361 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43ADA6D14F2893B22AE3BD54 /* Pods-LKWallpaper.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NQKQNX8QS9;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
+				INFOPLIST_FILE = LKWallpaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukj.LKWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25F7990B1ED1989E004E8361 /* Build configuration list for PBXProject "LKWallpaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25F799251ED1989E004E8361 /* Debug */,
+				25F799261ED1989E004E8361 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25F799271ED1989E004E8361 /* Build configuration list for PBXNativeTarget "LKWallpaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25F799281ED1989E004E8361 /* Debug */,
+				25F799291ED1989E004E8361 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25F799081ED1989E004E8361 /* Project object */;
+}
