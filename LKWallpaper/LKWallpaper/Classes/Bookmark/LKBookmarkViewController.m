@@ -1,29 +1,32 @@
 //
-//  LKCollectViewController.m
+//  LKBookmarkViewController.m
 //  LKWallpaper
 //
 //  Created by Lukj on 2017/5/21.
 //  Copyright © 2017年 lukj. All rights reserved.
 //
 
-#import "LKCollectViewController.h"
+#import "LKBookmarkViewController.h"
 #import "LKHomeCollectionViewFlowLayout.h"
 #import "LKHomeCollectionViewCell.h"
 #import "LKWallpaper.h"
 #import "LKMainTabBarController.h"
+#import "LKDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MBProgressHUD.h>
 
-@interface LKCollectViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface LKBookmarkViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 
 @property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, strong) LKMainTabBarController *tabbarController;
+@property(nonatomic, strong) LKDetailViewController *detailViewController;
 
 @end
 
 static NSString *cellID = @"cellID";
 
-@implementation LKCollectViewController
+@implementation LKBookmarkViewController
 
 
 - (void)viewDidLoad {
@@ -52,10 +55,10 @@ static NSString *cellID = @"cellID";
     }];
     self.collectionView = collectionView;
 
-    self.tabbarController = (LKMainTabBarController *)self.tabBarController;
+    self.tabbarController = (LKMainTabBarController *) self.tabBarController;
+
+    self.detailViewController = [[LKDetailViewController alloc] init];
 }
-
-
 
 
 #pragma mark - UICollectionViewDataSource
@@ -68,13 +71,13 @@ static NSString *cellID = @"cellID";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     LKWallpaper *wallpaper = self.tabbarController.collectWallpaperArray[(NSUInteger) indexPath.item];
-    
+
     LKHomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
 
-    UIButton *collectButton = [cell viewWithTag:10];
+    UIButton *bookmarkButton = [cell viewWithTag:10];
     //  当加载过的cell不会在走这里, 先默认设为false cell复用的解决问题
-    collectButton.selected = wallpaper.collected;
-    [collectButton addTarget:self action:@selector(clickCollectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    bookmarkButton.selected = wallpaper.collected;
+    [bookmarkButton addTarget:self action:@selector(clickCollectBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     UIImageView *imageView = [cell viewWithTag:20];
     [imageView sd_setImageWithURL:[NSURL URLWithString:wallpaper.regularUrl]];
@@ -98,6 +101,24 @@ static NSString *cellID = @"cellID";
     [self.collectionView reloadData];
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.label.text = NSLocalizedString(@"下载中", @"HUD loading title");
+    //    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.activityIndicatorColor = [UIColor whiteColor];
+    hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.5];
+    hud.label.textColor = [UIColor whiteColor];
+    //  提示窗弹出的时候, 修改不能点击屏幕的问题
+    hud.userInteractionEnabled = NO;
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.tabbarController.collectWallpaperArray[indexPath.row].rawUrl] options:0 progress:nil completed:^(UIImage *_Nullable image, NSData *_Nullable data, NSError *_Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL *_Nullable imageURL) {
+
+        self.detailViewController.image = image;
+        self.detailViewController.hidesBottomBarWhenPushed = YES;
+        [hud hideAnimated:YES];
+        [self.navigationController pushViewController:self.detailViewController animated:YES];
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

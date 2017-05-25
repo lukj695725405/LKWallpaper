@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2450C7AA530260EEE34D10E1 /* LKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2450CF226C7EFEE4C380B3F0 /* LKDetailViewController.m */; };
+		2450C89517F42AB500ED1C6F /* LKDetailSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2450C7D4AEE182A8B2C908A6 /* LKDetailSlider.m */; };
+		2450CC30F45211DC688101B8 /* LKDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2450CD7800B08C95C1C1F4D8 /* LKDetailView.m */; };
 		2509F87C1ED19ED900279F05 /* LKMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F87B1ED19ED900279F05 /* LKMainTabBarController.m */; };
 		2509F87F1ED19F6A00279F05 /* LKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F87E1ED19F6A00279F05 /* LKHomeViewController.m */; };
-		2509F8831ED19FE000279F05 /* LKCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F8821ED19FE000279F05 /* LKCollectViewController.m */; };
-		2509F8871ED1A02600279F05 /* LKDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F8861ED1A02600279F05 /* LKDetailsViewController.m */; };
+		2509F8831ED19FE000279F05 /* LKBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F8821ED19FE000279F05 /* LKBookmarkViewController.m */; };
+		2509F8871ED1A02600279F05 /* LKAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F8861ED1A02600279F05 /* LKAboutViewController.m */; };
 		2509F9011ED2B4C000279F05 /* LKHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F9001ED2B4C000279F05 /* LKHomeCollectionViewCell.m */; };
 		2509F9051ED2DCC700279F05 /* LKWallpaper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F9041ED2DCC700279F05 /* LKWallpaper.m */; };
 		2509F9091ED2DD7300279F05 /* LKMianTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F9081ED2DD7300279F05 /* LKMianTabBar.m */; };
 		2509F90B1ED30CB000279F05 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 2509F90A1ED30CB000279F05 /* data.json */; };
 		2509F90E1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2509F90D1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m */; };
-		257848151ED56FDA00379799 /* LKHomeDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257848141ED56FDA00379799 /* LKHomeDetailsViewController.m */; };
-		257848191ED56FF600379799 /* LKHomeDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 257848181ED56FF600379799 /* LKHomeDetailsView.m */; };
+		2591846D1ED6AF3D00736BCA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2591846A1ED6AF3D00736BCA /* UIImage+ImageEffects.m */; };
+		2591846E1ED6AF3D00736BCA /* UIView+BlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2591846C1ED6AF3D00736BCA /* UIView+BlurredImage.m */; };
 		25F799151ED1989E004E8361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F799141ED1989E004E8361 /* main.m */; };
 		25F799181ED1989E004E8361 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F799171ED1989E004E8361 /* AppDelegate.m */; };
 		25F799201ED1989E004E8361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F7991F1ED1989E004E8361 /* Assets.xcassets */; };
@@ -26,15 +29,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2450C22128B382E1025682E0 /* LKDetailSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDetailSlider.h; sourceTree = "<group>"; };
+		2450C505C946A1D72C945F4E /* LKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDetailViewController.h; sourceTree = "<group>"; };
+		2450C7D4AEE182A8B2C908A6 /* LKDetailSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDetailSlider.m; sourceTree = "<group>"; };
+		2450CD7800B08C95C1C1F4D8 /* LKDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDetailView.m; sourceTree = "<group>"; };
+		2450CEDB3CC2F74366DB5302 /* LKDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDetailView.h; sourceTree = "<group>"; };
+		2450CF226C7EFEE4C380B3F0 /* LKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDetailViewController.m; sourceTree = "<group>"; };
 		2509F8761ED19C0000279F05 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2509F87A1ED19ED900279F05 /* LKMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKMainTabBarController.h; sourceTree = "<group>"; };
 		2509F87B1ED19ED900279F05 /* LKMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKMainTabBarController.m; sourceTree = "<group>"; };
 		2509F87D1ED19F6A00279F05 /* LKHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeViewController.h; sourceTree = "<group>"; };
 		2509F87E1ED19F6A00279F05 /* LKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeViewController.m; sourceTree = "<group>"; };
-		2509F8811ED19FE000279F05 /* LKCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKCollectViewController.h; sourceTree = "<group>"; };
-		2509F8821ED19FE000279F05 /* LKCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKCollectViewController.m; sourceTree = "<group>"; };
-		2509F8851ED1A02600279F05 /* LKDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDetailsViewController.h; sourceTree = "<group>"; };
-		2509F8861ED1A02600279F05 /* LKDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDetailsViewController.m; sourceTree = "<group>"; };
+		2509F8811ED19FE000279F05 /* LKBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBookmarkViewController.h; sourceTree = "<group>"; };
+		2509F8821ED19FE000279F05 /* LKBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBookmarkViewController.m; sourceTree = "<group>"; };
+		2509F8851ED1A02600279F05 /* LKAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAboutViewController.h; sourceTree = "<group>"; };
+		2509F8861ED1A02600279F05 /* LKAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAboutViewController.m; sourceTree = "<group>"; };
 		2509F8FF1ED2B4C000279F05 /* LKHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeCollectionViewCell.h; sourceTree = "<group>"; };
 		2509F9001ED2B4C000279F05 /* LKHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeCollectionViewCell.m; sourceTree = "<group>"; };
 		2509F9031ED2DCC700279F05 /* LKWallpaper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKWallpaper.h; sourceTree = "<group>"; };
@@ -44,10 +53,10 @@
 		2509F90A1ED30CB000279F05 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		2509F90C1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		2509F90D1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		257848131ED56FDA00379799 /* LKHomeDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeDetailsViewController.h; sourceTree = "<group>"; };
-		257848141ED56FDA00379799 /* LKHomeDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeDetailsViewController.m; sourceTree = "<group>"; };
-		257848171ED56FF600379799 /* LKHomeDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHomeDetailsView.h; sourceTree = "<group>"; };
-		257848181ED56FF600379799 /* LKHomeDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHomeDetailsView.m; sourceTree = "<group>"; };
+		259184691ED6AF3D00736BCA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		2591846A1ED6AF3D00736BCA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		2591846B1ED6AF3D00736BCA /* UIView+BlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BlurredImage.h"; sourceTree = "<group>"; };
+		2591846C1ED6AF3D00736BCA /* UIView+BlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BlurredImage.m"; sourceTree = "<group>"; };
 		25F799101ED1989E004E8361 /* LKWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LKWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25F799141ED1989E004E8361 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		25F799161ED1989E004E8361 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,14 +81,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2450C563145CD307E36F7A97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2450CEDB3CC2F74366DB5302 /* LKDetailView.h */,
+				2450CD7800B08C95C1C1F4D8 /* LKDetailView.m */,
+				2450C22128B382E1025682E0 /* LKDetailSlider.h */,
+				2450C7D4AEE182A8B2C908A6 /* LKDetailSlider.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2450C77E2254B178D87CE569 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2450C563145CD307E36F7A97 /* View */,
+				2450C505C946A1D72C945F4E /* LKDetailViewController.h */,
+				2450CF226C7EFEE4C380B3F0 /* LKDetailViewController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		2509F8771ED19D0D00279F05 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				259184671ED6AF3600736BCA /* Libs */,
 				2509F9021ED2DCAF00279F05 /* Models */,
 				2509F8791ED19DF500279F05 /* Main */,
 				2509F8781ED19D0D00279F05 /* Home */,
-				2509F8801ED19FC800279F05 /* Collect */,
-				2509F8841ED1A00700279F05 /* Details */,
+				2509F8801ED19FC800279F05 /* Bookmark */,
+				2509F8841ED1A00700279F05 /* About */,
+				2450C77E2254B178D87CE569 /* Detail */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -87,7 +119,6 @@
 		2509F8781ED19D0D00279F05 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				257848121ED56FD900379799 /* HomeDetails */,
 				2509F8FE1ED2B4B000279F05 /* View */,
 				2509F87D1ED19F6A00279F05 /* LKHomeViewController.h */,
 				2509F87E1ED19F6A00279F05 /* LKHomeViewController.m */,
@@ -105,22 +136,22 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		2509F8801ED19FC800279F05 /* Collect */ = {
+		2509F8801ED19FC800279F05 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
-				2509F8811ED19FE000279F05 /* LKCollectViewController.h */,
-				2509F8821ED19FE000279F05 /* LKCollectViewController.m */,
+				2509F8811ED19FE000279F05 /* LKBookmarkViewController.h */,
+				2509F8821ED19FE000279F05 /* LKBookmarkViewController.m */,
 			);
-			path = Collect;
+			path = Bookmark;
 			sourceTree = "<group>";
 		};
-		2509F8841ED1A00700279F05 /* Details */ = {
+		2509F8841ED1A00700279F05 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				2509F8851ED1A02600279F05 /* LKDetailsViewController.h */,
-				2509F8861ED1A02600279F05 /* LKDetailsViewController.m */,
+				2509F8851ED1A02600279F05 /* LKAboutViewController.h */,
+				2509F8861ED1A02600279F05 /* LKAboutViewController.m */,
 			);
-			path = Details;
+			path = About;
 			sourceTree = "<group>";
 		};
 		2509F8FE1ED2B4B000279F05 /* View */ = {
@@ -152,23 +183,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		257848121ED56FD900379799 /* HomeDetails */ = {
+		259184671ED6AF3600736BCA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				257848161ED56FE500379799 /* View */,
-				257848131ED56FDA00379799 /* LKHomeDetailsViewController.h */,
-				257848141ED56FDA00379799 /* LKHomeDetailsViewController.m */,
+				259184681ED6AF3D00736BCA /* UIImage+ImageEffects */,
 			);
-			path = HomeDetails;
+			path = Libs;
 			sourceTree = "<group>";
 		};
-		257848161ED56FE500379799 /* View */ = {
+		259184681ED6AF3D00736BCA /* UIImage+ImageEffects */ = {
 			isa = PBXGroup;
 			children = (
-				257848171ED56FF600379799 /* LKHomeDetailsView.h */,
-				257848181ED56FF600379799 /* LKHomeDetailsView.m */,
+				259184691ED6AF3D00736BCA /* UIImage+ImageEffects.h */,
+				2591846A1ED6AF3D00736BCA /* UIImage+ImageEffects.m */,
+				2591846B1ED6AF3D00736BCA /* UIView+BlurredImage.h */,
+				2591846C1ED6AF3D00736BCA /* UIView+BlurredImage.m */,
 			);
-			path = View;
+			path = "UIImage+ImageEffects";
 			sourceTree = "<group>";
 		};
 		25F799071ED1989E004E8361 = {
@@ -356,16 +387,19 @@
 			files = (
 				2509F90E1ED3529C00279F05 /* LKHomeCollectionViewFlowLayout.m in Sources */,
 				2509F9091ED2DD7300279F05 /* LKMianTabBar.m in Sources */,
+				2591846D1ED6AF3D00736BCA /* UIImage+ImageEffects.m in Sources */,
 				2509F9051ED2DCC700279F05 /* LKWallpaper.m in Sources */,
-				257848191ED56FF600379799 /* LKHomeDetailsView.m in Sources */,
 				2509F9011ED2B4C000279F05 /* LKHomeCollectionViewCell.m in Sources */,
 				2509F87F1ED19F6A00279F05 /* LKHomeViewController.m in Sources */,
-				2509F8831ED19FE000279F05 /* LKCollectViewController.m in Sources */,
-				2509F8871ED1A02600279F05 /* LKDetailsViewController.m in Sources */,
+				2509F8831ED19FE000279F05 /* LKBookmarkViewController.m in Sources */,
+				2509F8871ED1A02600279F05 /* LKAboutViewController.m in Sources */,
 				25F799181ED1989E004E8361 /* AppDelegate.m in Sources */,
 				2509F87C1ED19ED900279F05 /* LKMainTabBarController.m in Sources */,
-				257848151ED56FDA00379799 /* LKHomeDetailsViewController.m in Sources */,
+				2591846E1ED6AF3D00736BCA /* UIView+BlurredImage.m in Sources */,
 				25F799151ED1989E004E8361 /* main.m in Sources */,
+				2450CC30F45211DC688101B8 /* LKDetailView.m in Sources */,
+				2450C89517F42AB500ED1C6F /* LKDetailSlider.m in Sources */,
+				2450C7AA530260EEE34D10E1 /* LKDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +514,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = LKWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lukj.LKWallpaper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukj.360wp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -494,7 +528,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = LKWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lukj.LKWallpaper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukj.360wp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

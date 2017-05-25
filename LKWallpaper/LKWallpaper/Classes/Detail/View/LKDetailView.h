@@ -1,5 +1,5 @@
 //
-//  LKHomeDetailsView.h
+//  LKDetailView.h
 //  LKWallpaper
 //
 //  Created by Lukj on 2017/5/24.
@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+
 typedef enum : NSUInteger {
     LKHomeDetailsBtnTypePop = 10,    //  返回
     LKHomeDetailsBtnTypeDownLoad,// 下载
     LKHomeDetailsBtnTypeShare,//    分享
-    LKHomeDetailsBtnTypeEdit,//     修改
+    LKHomeDetailsBtnTypeBlurred,//  模糊
     LKHomeDetailsBtnTypeInspect//   预览
-    
+
 } LKHomeDetailsBtnType;
 
-@interface LKHomeDetailsView : UIView
+@interface LKDetailView : UIView
 
 @end

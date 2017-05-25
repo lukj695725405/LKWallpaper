@@ -1,18 +1,18 @@
 //
-//  LKDetailsViewController.m
+//  LKAboutViewController.m
 //  LKWallpaper
 //
 //  Created by Lukj on 2017/5/21.
 //  Copyright © 2017年 lukj. All rights reserved.
 //
 
-#import "LKDetailsViewController.h"
+#import "LKAboutViewController.h"
 
-@interface LKDetailsViewController ()
+@interface LKAboutViewController ()
 
 @end
 
-@implementation LKDetailsViewController
+@implementation LKAboutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

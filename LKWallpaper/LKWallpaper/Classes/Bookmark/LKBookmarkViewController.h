@@ -1,5 +1,5 @@
 //
-//  LKDetailsViewController.h
+//  LKBookmarkViewController.h
 //  LKWallpaper
 //
 //  Created by Lukj on 2017/5/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKDetailsViewController : UIViewController
+@interface LKBookmarkViewController : UIViewController
 
 @end

@@ -11,12 +11,12 @@
 @implementation LKHomeCollectionViewFlowLayout
 
 - (void)prepareLayout {
-    
+
     [super prepareLayout];
-    
+
     CGFloat W = self.collectionView.bounds.size.width;
     CGFloat H = self.collectionView.bounds.size.height;
-    
+
     CGFloat itemH = H * 0.4;
     //  设置每个item的大小
     self.itemSize = CGSizeMake(W, itemH);
@@ -27,32 +27,31 @@
     self.minimumLineSpacing = 0;
     self.minimumInteritemSpacing = 0;
 
-   
-    
+
 }
 
-- (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect{
-    
+- (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
+
     NSArray<UICollectionViewLayoutAttributes *> *arr = [super layoutAttributesForElementsInRect:rect];
-    
+
     //    NSLog(@"%@",arr);
-    
+
     NSMutableArray *arryM = [[NSMutableArray alloc] initWithArray:arr copyItems:YES];
-    
+
     for (UICollectionViewLayoutAttributes *attr in arryM) {
-        
+
         CGFloat screenH = self.collectionView.bounds.size.height - 20;
         CGFloat comonY = self.collectionView.contentOffset.y + screenH * 0.4;
-        
+
         CGFloat margin = attr.center.y - comonY;
 //        NSLog(@"%f", margin);
-        
+
         CGFloat scale = 1 - ABS(margin) / screenH * 0.2;
-        
+
 //        attr.transform3D = CATransform3DMakeScale(scale, scale, 1);
         attr.transform = CGAffineTransformMakeScale(scale, scale);
     }
-    
+
     return arryM.copy;
 }
 
@@ -89,9 +88,9 @@
 //}
 
 //  实时刷新
--(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
-    
-    
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+
+
     return YES;
 }
 

@@ -1,5 +1,5 @@
 //
-//  LKCollectViewController.h
+//  LKAboutViewController.h
 //  LKWallpaper
 //
 //  Created by Lukj on 2017/5/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKCollectViewController : UIViewController
+@interface LKAboutViewController : UIViewController
 
 @end

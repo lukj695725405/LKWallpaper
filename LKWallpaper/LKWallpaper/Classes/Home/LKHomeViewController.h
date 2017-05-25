@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LKWallpaper.h"
+
 @interface LKHomeViewController : UIViewController
 
-@property(nonatomic, strong) NSArray <LKWallpaper *>*data;
+@property(nonatomic, strong) NSArray <LKWallpaper *> *data;
 @property(nonatomic, strong) NSMutableSet *idSet;
 
 @end

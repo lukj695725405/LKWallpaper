@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "LKWallpaper.h"
+
 @interface LKMainTabBarController : UITabBarController
 
-@property (nonatomic, strong) NSMutableArray *collectWallpaperArray;
+@property(nonatomic, strong) NSMutableArray <LKWallpaper *> *collectWallpaperArray;
 
 
-- (void) collectWallpaper:(LKWallpaper *)newWallpaper;
-- (void) uncollectWallpaper:(LKWallpaper *)existWallpaper;
-- (LKWallpaper *) collectedWallpaper: (LKWallpaper *)checkedWallpaper;
+- (void)collectWallpaper:(LKWallpaper *)newWallpaper;
+
+- (void)uncollectWallpaper:(LKWallpaper *)existWallpaper;
+
+- (LKWallpaper *)collectedWallpaper:(LKWallpaper *)checkedWallpaper;
 
 @end

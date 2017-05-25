@@ -11,8 +11,7 @@
 @implementation LKMianTabBar
 
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self setupUI];
@@ -21,16 +20,15 @@
 }
 
 - (void)setupUI {
-    
-    
+
+
 }
 
 //  设置tabBar的高度
--(CGSize)sizeThatFits:(CGSize)size
-{
+- (CGSize)sizeThatFits:(CGSize)size {
     CGSize sizeThatFits = [super sizeThatFits:size];
     sizeThatFits.height = 40;
-    
+
     return sizeThatFits;
 }
 

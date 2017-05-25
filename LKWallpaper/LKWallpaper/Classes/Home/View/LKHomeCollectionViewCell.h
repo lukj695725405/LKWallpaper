@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface LKHomeCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIButton *collectBtn;
+@property(nonatomic, strong) UIButton *bookmarkBtn;
 @end

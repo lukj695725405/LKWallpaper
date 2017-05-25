@@ -8,6 +8,7 @@
 
 #import "LKMainTabBarController.h"
 #import "LKMianTabBar.h"
+
 @interface LKMainTabBarController ()
 
 @end
@@ -19,17 +20,17 @@
     // init data
     [self loadData];
     [self setupTabBarUI];
-    
+
 }
 
 - (void)loadData {
-    
+
     //  沙盒路径
     NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collect.plist"];
-   
+
     NSLog(@"%@", filePath);
     //  判断沙盒中是否存在
-    if([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         //  如果存在加载本地图片
         self.collectWallpaperArray = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:filePath]];
     } else {
@@ -37,8 +38,7 @@
         self.collectWallpaperArray = [[NSMutableArray alloc] init];
     }
 
-    
-    
+
 }
 
 - (void)setupTabBarUI {
@@ -50,37 +50,44 @@
 
     LKMianTabBar *tabBar = [[LKMianTabBar alloc] init];
     [self setValue:tabBar forKey:@"tabBar"];
-    
+
     //  首页
     UIViewController *homeViewController = [self loadTabBarWithClassName:@"LKHomeViewController" andImageName:@"Grid" andTitle:@"首页"];
     //  给首页嵌入navbar
-    UINavigationController *homeViewNavigationController = [[UINavigationController alloc]initWithRootViewController:homeViewController];
+    UINavigationController *homeViewNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     //  注释运行你就知道
     homeViewController.edgesForExtendedLayout = UIRectEdgeNone;
     //  隐藏navbar
     [homeViewNavigationController setNavigationBarHidden:YES];
+
+
     //  收藏
-     UIViewController *collectViewController = [self loadTabBarWithClassName:@"LKCollectViewController" andImageName:@"Bookmark" andTitle:@"收藏"];
+    UIViewController *bookmarkViewController = [self loadTabBarWithClassName:@"LKBookmarkViewController" andImageName:@"Bookmark" andTitle:@"收藏"];
+    UINavigationController *bookmarkViewNavigationController = [[UINavigationController alloc] initWithRootViewController:bookmarkViewController];
+    bookmarkViewNavigationController.edgesForExtendedLayout = UIRectEdgeNone;
+    [bookmarkViewNavigationController setNavigationBarHidden:YES];
+
+
     //  详情
-     UIViewController *detailsViewController = [self loadTabBarWithClassName:@"LKDetailsViewController" andImageName:@"More" andTitle:@"详情"];
-    
-    self.viewControllers = @[homeViewNavigationController, collectViewController, detailsViewController];
-    
+    UIViewController *detailsViewController = [self loadTabBarWithClassName:@"LKAboutViewController" andImageName:@"More" andTitle:@"详情"];
+
+    self.viewControllers = @[homeViewNavigationController, bookmarkViewNavigationController, detailsViewController];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cacheData) name:@"ApplicationWillTerminate" object:nil];
 }
 
 - (void)cacheData {
-    
+
     //  沙盒路径
     NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collect.plist"];
     [NSKeyedArchiver archiveRootObject:self.collectWallpaperArray toFile:filePath];
     NSLog(@"%@", filePath);
-    
+
 }
 
 
 - (UIViewController *)loadTabBarWithClassName:(NSString *)className andImageName:(NSString *)imageName andTitle:(NSString *)title {
-    
+
     Class clazz = NSClassFromString(className);
     UIViewController *vc = (UIViewController *) [[clazz alloc] init];
     //  设置UITabBar的内间距
@@ -89,34 +96,34 @@
     vc.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     //  设置选中图片及使用原始图片颜色
     vc.tabBarItem.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@-S", imageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-  
+
     return vc;
-    
+
 }
 
-- (void) collectWallpaper:(LKWallpaper *)newWallpaper {
+- (void)collectWallpaper:(LKWallpaper *)newWallpaper {
     [self.collectWallpaperArray insertObject:newWallpaper atIndex:0];
 }
 
-- (void) uncollectWallpaper:(LKWallpaper *)existWallpaper {
+- (void)uncollectWallpaper:(LKWallpaper *)existWallpaper {
     [self.collectWallpaperArray removeObject:existWallpaper];
 }
 
-- (LKWallpaper *) collectedWallpaper: (LKWallpaper *)checkedWallpaper {
-    
-    if([self.collectWallpaperArray containsObject:checkedWallpaper]) {
+- (LKWallpaper *)collectedWallpaper:(LKWallpaper *)checkedWallpaper {
+
+    if ([self.collectWallpaperArray containsObject:checkedWallpaper]) {
         return checkedWallpaper;
-        
+
     } else {
-        for(LKWallpaper *wallpaper in self.collectWallpaperArray) {
+        for (LKWallpaper *wallpaper in self.collectWallpaperArray) {
             if ([wallpaper.wallpaperId isEqualToString:checkedWallpaper.wallpaperId]) {
                 return wallpaper;
             }
         }
     }
-    
+
     return checkedWallpaper;
-    
+
 }
 
 

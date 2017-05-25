@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LKMainTabBarController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -49,7 +50,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ApplicationWillTerminate" object:nil];
-    
+
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

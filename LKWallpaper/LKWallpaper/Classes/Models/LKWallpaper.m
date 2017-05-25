@@ -9,13 +9,13 @@
 #import "LKWallpaper.h"
 
 
-@implementation LKWallpaper 
+@implementation LKWallpaper
 
 + (instancetype)sharedWallpaper {
     static LKWallpaper *tools;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        tools = [[LKWallpaper alloc]init];
+        tools = [[LKWallpaper alloc] init];
     });
     return tools;
 }
@@ -23,19 +23,18 @@
 
 //  自定义模型数据与字段不匹配时用这个方法
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"wallpaperId" : @"id",
-             @"backgroundColor" : @"color",
-             @"regularUrl" : @"urls.regular",
-             @"thumbUrl" : @"urls.thumb",
-             @"smallUrl" : @"urls.small",
-             @"fullUrl" : @"urls.full",
-             @"rawUrl" : @"urls.raw"
-             };
+    return @{@"wallpaperId": @"id",
+            @"backgroundColor": @"color",
+            @"regularUrl": @"urls.regular",
+            @"thumbUrl": @"urls.thumb",
+            @"smallUrl": @"urls.small",
+            @"fullUrl": @"urls.full",
+            @"rawUrl": @"urls.raw"
+    };
 }
 
 
-- (void)encodeWithCoder:(NSCoder *)coder
-{
+- (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.wallpaperId forKey:@"wallpaperId"];
     [coder encodeBool:self.collected forKey:@"collected"];
     [coder encodeObject:self.backgroundColor forKey:@"backgroundColor"];
@@ -46,8 +45,7 @@
     [coder encodeObject:self.rawUrl forKey:@"rawUrl"];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
+- (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super init];
     if (self) {
         self.wallpaperId = [coder decodeObjectForKey:@"wallpaperId"];
@@ -62,8 +60,6 @@
     }
     return self;
 }
-
-
 
 
 @end

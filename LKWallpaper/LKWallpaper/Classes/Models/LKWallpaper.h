@@ -25,6 +25,4 @@
 @property(nonatomic, strong) NSString *rawUrl;
 
 
-
-
 @end
