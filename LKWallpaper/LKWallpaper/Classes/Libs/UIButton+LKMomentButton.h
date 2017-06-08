@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIButton (LKMomentButton)
-
++ (instancetype) buttonWithBackgroundColor:(UIColor *)backgroundColor andFont:(CGFloat)font andImageName:(NSString *)imageName andTextColor:(UIColor *)textColor andText:(NSString *)text;
 @end

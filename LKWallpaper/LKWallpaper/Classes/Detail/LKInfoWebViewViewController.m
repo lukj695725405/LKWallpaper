@@ -14,9 +14,34 @@
 
 @implementation LKInfoWebViewViewController
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadUrl];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_webView];
+    
+}
+
+- (void)loadUrl {
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]];
+    
+    [self.webView loadRequest:request];
+    
 }
 
 - (void)didReceiveMemoryWarning {

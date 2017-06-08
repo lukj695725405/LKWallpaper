@@ -10,4 +10,8 @@
 
 @interface LKInfoWebViewViewController : UIViewController
 
+@property(nonatomic, strong) UIWebView *webView;
+@property(nonatomic, copy) NSString *urlStr;
+
+
 @end

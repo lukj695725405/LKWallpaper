@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (LKMomentLabel)
++ (instancetype) labelWithText:(NSString *)text;
 + (instancetype) labelWithColor:(UIColor *)color andFont:(CGFloat)font andText:(NSString *)text;
 @end

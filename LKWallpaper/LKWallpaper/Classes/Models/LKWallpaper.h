@@ -18,11 +18,12 @@
 
 @property(nonatomic, assign) BOOL collected;
 
-@property(nonatomic, strong) NSString *regularUrl;
-@property(nonatomic, strong) NSString *thumbUrl;
-@property(nonatomic, strong) NSString *smallUrl;
-@property(nonatomic, strong) NSString *fullUrl;
 @property(nonatomic, strong) NSString *rawUrl;
+@property(nonatomic, strong) NSString *fullUrl;
+@property(nonatomic, strong) NSString *regularUrl;
+@property(nonatomic, strong) NSString *smallUrl;
+@property(nonatomic, strong) NSString *thumbUrl;
+@property(nonatomic, strong) NSString *userProfileUrl;
 
-
+@property(nonatomic, assign) BOOL isCache;
 @end

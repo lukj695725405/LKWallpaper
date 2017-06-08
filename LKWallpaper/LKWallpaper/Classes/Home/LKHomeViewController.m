@@ -15,6 +15,9 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking.h>
 #import "LKDetailViewController.h"
+#import "LKRefreshGifFooter.h"
+#import "LKRefreshGifHeader.h"
+
 
 @interface LKHomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -22,12 +25,13 @@
 @property(nonatomic, assign) int currentPage;
 @property(nonatomic, strong) LKMainTabBarController *mainTabBarController;
 @property(nonatomic, strong) AFHTTPSessionManager *networkManager;
-@property(nonatomic, strong) LKDetailViewController *homeDetailsViewController;
-
-
+@property(nonatomic, strong) LKDetailViewController *detailsViewController;
+@property(nonatomic, strong) UIImage *placeHolderImage;
 @end
 
 static NSString *cellID = @"cellID";
+
+const int PageSize = 10;
 
 @implementation LKHomeViewController
 
@@ -62,44 +66,36 @@ static NSString *cellID = @"cellID";
 
 - (void)loadDataFromNetwork:(BOOL)addToHeader {
 
-    //  加载本地json文件
-//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"data.json" withExtension:nil];
-//    NSString *jsonStrig = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-//    
-//    NSArray *newData = [NSArray yy_modelArrayWithClass:[LKWallpaper class] json:jsonStrig];
-//    
-//    if(addToHeader) {
-//        self.data = [newData arrayByAddingObjectsFromArray:self.data];
-//    } {
-//        self.data = [self.data arrayByAddingObjectsFromArray:newData];
-//    }
-
-
-
     int page;
     if (addToHeader) { //    如果为真 则page始终为1
         page = 1;
     } else {//  否则++
-        page = self.currentPage++;
+        page = ++self.currentPage;
     }
 
     if (self.networkManager == nil) {
         self.networkManager = [AFHTTPSessionManager manager];
     }
 
-    NSString *getUrl = [NSString stringWithFormat:@"https://api.unsplash.com/photos?client_id=c5f4e014076331726eb0c3379db2cfef0d9ac3a259d27b6fa9f6fe1171bf7c29&page=%d&per_page=30", page];
-
+    NSString *getUrl = [NSString stringWithFormat:@"https://api.unsplash.com/photos?client_id=c5f4e014076331726eb0c3379db2cfef0d9ac3a259d27b6fa9f6fe1171bf7c29&page=%d&per_page=%d", page, PageSize];
+//c5f4e014076331726eb0c3379db2cfef0d9ac3a259d27b6fa9f6fe1171bf7c29
+//395005f5b2b2da243b35408e946ff70212a51767673edefc795c95e540231a3f
     [self.networkManager GET:getUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
 
         NSArray *newData = [NSArray yy_modelArrayWithClass:[LKWallpaper class] json:responseObject];
         [self addData:newData toHeader:addToHeader];
-        [self.collectionView reloadData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
 
-    }                failure:^(NSURLSessionTask *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         [self.collectionView.mj_header endRefreshing];
         [self.collectionView.mj_footer endRefreshing];
+        
+        [self showMsg:@"加载失败" duration:1 imgName:nil];
+        
     }];
 }
 
@@ -132,7 +128,9 @@ static NSString *cellID = @"cellID";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cacheData) name:@"ApplicationWillTerminate" object:nil];
 
 
-    self.homeDetailsViewController = [[LKDetailViewController alloc] init];
+    self.detailsViewController = [[LKDetailViewController alloc] init];
+
+    self.placeHolderImage = [UIImage imageNamed:@"Placeholder"];
 
     [self setupUI];
 }
@@ -145,12 +143,10 @@ static NSString *cellID = @"cellID";
 
 - (void)cacheData {
     NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"cache.plist"];
-//    NSLog(@"%@", filePath);
-    [NSKeyedArchiver archiveRootObject:[self.data subarrayWithRange:NSMakeRange(0, 30)] toFile:filePath];
+    [NSKeyedArchiver archiveRootObject:[self.data subarrayWithRange:NSMakeRange(0, PageSize)] toFile:filePath];
 }
 
 - (void)setupUI {
-
 
     LKHomeCollectionViewFlowLayout *flowLayout = [[LKHomeCollectionViewFlowLayout alloc] init];
 
@@ -158,7 +154,6 @@ static NSString *cellID = @"cellID";
     [collectionView registerClass:[LKHomeCollectionViewCell class] forCellWithReuseIdentifier:cellID];
     collectionView.delegate = self;
     collectionView.dataSource = self;
-//    collectionView.backgroundColor = [UIColor blueColor];
     [self.view addSubview:collectionView];
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.offset(20);
@@ -170,16 +165,12 @@ static NSString *cellID = @"cellID";
     //  关闭预加载模式, 防止出现突然出现然后又缩小的效果
     collectionView.prefetchingEnabled = NO;
 
-    // The pull to refresh
-    collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        //Call this Block When enter the refresh status automatically
-        //  true真为下拉刷新
+//    // The pull to refresh
+    collectionView.mj_header = [LKRefreshGifHeader headerWithRefreshingBlock:^{
         [self loadDataFromNetwork:true];
     }];
 
-    collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        //Call this Block When enter the refresh status automatically
-        //  false假为上拉加载
+    collectionView.mj_footer = [LKRefreshGifFooter footerWithRefreshingBlock:^{
         [self loadDataFromNetwork:false];
     }];
 
@@ -198,13 +189,20 @@ static NSString *cellID = @"cellID";
 
     LKHomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
 
-    UIButton *collectButton = [cell viewWithTag:10];
+    UIButton *bookmarkButton = [cell viewWithTag:10];
     //  当加载过的cell不会在走这里, 先默认设为false cell复用的解决问题
-    collectButton.selected = wallpaper.collected;
-    [collectButton addTarget:self action:@selector(clickCollectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    bookmarkButton.selected = wallpaper.collected;
+    [bookmarkButton addTarget:self action:@selector(clickCollectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    bookmarkButton.alpha = 0;
 
     UIImageView *imageView = [cell viewWithTag:20];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:wallpaper.regularUrl]];
+
+    [imageView sd_setImageWithURL:[NSURL URLWithString:wallpaper.regularUrl] placeholderImage:self.placeHolderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if(!error) {
+            bookmarkButton.alpha = 1;
+        }
+    }];
+
 
     cell.backgroundColor = wallpaper.backgroundColor;
     return cell;
@@ -241,26 +239,15 @@ static NSString *cellID = @"cellID";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"did select %zd", indexPath.item);
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.label.text = NSLocalizedString(@"下载中", @"HUD loading title");
-//    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.activityIndicatorColor = [UIColor whiteColor];
-    hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.5];
-    hud.label.textColor = [UIColor whiteColor];
-    //  提示窗弹出的时候, 修改不能点击屏幕的问题
-    hud.userInteractionEnabled = NO;
-    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.data[indexPath.row].rawUrl] options:0 progress:nil completed:^(UIImage *_Nullable image, NSData *_Nullable data, NSError *_Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL *_Nullable imageURL) {
-
-        self.homeDetailsViewController.image = image;
-        self.homeDetailsViewController.hidesBottomBarWhenPushed = YES;
-        [hud hideAnimated:YES];
-        [self.navigationController pushViewController:self.homeDetailsViewController animated:YES];
-    }];
-
+    self.detailsViewController.hidesBottomBarWhenPushed = YES;
+    self.detailsViewController.wallpaper = self.data[indexPath.row];
+    [self.navigationController pushViewController:self.detailsViewController animated:YES];
+//    [self.navigationController presentViewController:self.detailsViewController animated:YES completion:nil];
+    
+    
 }
 
-
-//提示窗
+//  MARK:提示窗
 - (void)showMsg:(NSString *)msg duration:(CGFloat)time imgName:(NSString *)imgName {
 
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -283,13 +270,6 @@ static NSString *cellID = @"cellID";
     [hud hideAnimated:YES afterDelay:time];
 }
 
-
-//  设置电池一栏的文字颜色
-//- (UIStatusBarStyle)preferredStatusBarStyle{
-//    
-//    return UIStatusBarStyleLightContent;
-//    
-//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

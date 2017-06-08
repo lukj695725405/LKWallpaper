@@ -63,8 +63,10 @@
 
     //  收藏
     UIViewController *bookmarkViewController = [self loadTabBarWithClassName:@"LKBookmarkViewController" andImageName:@"Bookmark" andTitle:@"收藏"];
+    //  给首页嵌入navbar
     UINavigationController *bookmarkViewNavigationController = [[UINavigationController alloc] initWithRootViewController:bookmarkViewController];
-    bookmarkViewNavigationController.edgesForExtendedLayout = UIRectEdgeNone;
+    //
+    bookmarkViewController.edgesForExtendedLayout = UIRectEdgeNone;
     [bookmarkViewNavigationController setNavigationBarHidden:YES];
 
 

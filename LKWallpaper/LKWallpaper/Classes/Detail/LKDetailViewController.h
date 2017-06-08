@@ -11,6 +11,6 @@
 
 @interface LKDetailViewController : UIViewController
 
-@property(nonatomic, strong) UIImage *image;
+@property(nonatomic, strong) LKWallpaper *wallpaper;
 
 @end

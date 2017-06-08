@@ -24,36 +24,35 @@
     //  竖着排列
     self.scrollDirection = UICollectionViewScrollDirectionVertical;
     //  内边距
-    self.minimumLineSpacing = 0;
+    self.minimumLineSpacing = 10;
     self.minimumInteritemSpacing = 0;
 
 
 }
 
-- (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
-
-    NSArray<UICollectionViewLayoutAttributes *> *arr = [super layoutAttributesForElementsInRect:rect];
-
-    //    NSLog(@"%@",arr);
-
-    NSMutableArray *arryM = [[NSMutableArray alloc] initWithArray:arr copyItems:YES];
-
-    for (UICollectionViewLayoutAttributes *attr in arryM) {
-
-        CGFloat screenH = self.collectionView.bounds.size.height - 20;
-        CGFloat comonY = self.collectionView.contentOffset.y + screenH * 0.4;
-
-        CGFloat margin = attr.center.y - comonY;
-//        NSLog(@"%f", margin);
-
-        CGFloat scale = 1 - ABS(margin) / screenH * 0.2;
-
-//        attr.transform3D = CATransform3DMakeScale(scale, scale, 1);
-        attr.transform = CGAffineTransformMakeScale(scale, scale);
-    }
-
-    return arryM.copy;
-}
+//- (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
+//
+//    NSArray<UICollectionViewLayoutAttributes *> *arr = [super layoutAttributesForElementsInRect:rect];
+//
+//    //    NSLog(@"%@",arr);
+//
+//    NSMutableArray *arryM = [[NSMutableArray alloc] initWithArray:arr copyItems:YES];
+//
+//    for (UICollectionViewLayoutAttributes *attr in arryM) {
+//
+//        CGFloat screenH = self.collectionView.bounds.size.height - 20;
+//        CGFloat comonY = self.collectionView.contentOffset.y + screenH * 0.4;
+////        NSLog(@"%f", self.collectionView.contentOffset.y );
+//        CGFloat margin = attr.center.y - comonY;
+////        NSLog(@"%f", margin);
+//
+//        CGFloat scale = 1 - ABS(margin) / screenH * 0.2;
+////        attr.transform3D = CATransform3DMakeScale(scale, scale, 1);
+//        attr.transform = CGAffineTransformMakeScale(scale, scale);
+//    }
+//
+//    return arryM.copy;
+//}
 
 //- (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect{
 //    
@@ -89,7 +88,7 @@
 
 //  实时刷新
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
-
+    [super shouldInvalidateLayoutForBoundsChange:newBounds];
 
     return YES;
 }

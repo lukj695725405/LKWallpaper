@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LKMainTabBarController.h"
-
+#import <Bugly/Bugly.h>
 @interface AppDelegate ()
 
 @end
@@ -18,11 +18,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [WXApi registerApp:@"wx4bac3a13fa4fba06"];
+    
+    [Bugly startWithAppId:@"cad07d258d"];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     LKMainTabBarController *tabBar = [[LKMainTabBarController alloc] init];
     self.window.rootViewController = tabBar;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    return [WXApi handleOpenURL:url delegate:self];
 }
 
 

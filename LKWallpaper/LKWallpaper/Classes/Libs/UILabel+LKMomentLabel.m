@@ -17,6 +17,13 @@
     headLabel.text = text;
     headLabel.textColor = color;
     headLabel.font = [UIFont systemFontOfSize:font];
+    headLabel.numberOfLines = 0;
+    return headLabel;
+}
++ (instancetype) labelWithText:(NSString *)text{
+    
+    UILabel *headLabel = [[UILabel alloc]init];
+    headLabel.text = text;
     return headLabel;
 }
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LKAboutViewBtnCell : UITableViewCell
-
+@property (nonatomic, strong) UIButton *button;
 @end

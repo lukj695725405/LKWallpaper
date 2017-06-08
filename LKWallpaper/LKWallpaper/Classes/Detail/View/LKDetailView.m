@@ -23,16 +23,17 @@
 
 
     //  返回
-    [self loadBtnWithImageName:@"Grid" andLKHomeDetailsBtnType:LKHomeDetailsBtnTypePop];
+    [self loadBtnWithImageName:@"Back" andLKHomeDetailsBtnType:LKHomeDetailBtnTypePop];
     //  预览
-    [self loadBtnWithImageName:@"Grid" andLKHomeDetailsBtnType:LKHomeDetailsBtnTypeInspect];
+    [self loadBtnWithImageName:@"Preview" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeInspect];
     //  模糊修改
-    [self loadBtnWithImageName:@"Grid-S" andLKHomeDetailsBtnType:LKHomeDetailsBtnTypeBlurred];
+    [self loadBtnWithImageName:@"Blur" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeBlurred];
     //  下载保存相册
-    [self loadBtnWithImageName:@"More" andLKHomeDetailsBtnType:LKHomeDetailsBtnTypeDownLoad];
+    [self loadBtnWithImageName:@"Save" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeDownLoad];
     //  分享
-    [self loadBtnWithImageName:@"Grid" andLKHomeDetailsBtnType:LKHomeDetailsBtnTypeShare];
-
+    [self loadBtnWithImageName:@"Share" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeShare];
+    
+    [self loadBtnWithImageName:@"Info" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeInfo];
 
 }
 
@@ -48,12 +49,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    CGFloat btnW = self.frame.size.width / 5;
+    CGFloat btnW = self.frame.size.width / 6;
 
     for (int i = 0; i < self.subviews.count; i++) {
 
         UIButton *btn = self.subviews[i];
-
 
         CGFloat x = btnW * i;
 

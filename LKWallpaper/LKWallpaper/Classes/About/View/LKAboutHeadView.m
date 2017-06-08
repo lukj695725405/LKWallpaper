@@ -10,12 +10,31 @@
 
 @implementation LKAboutHeadView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupUI];
+    }
+    return self;
 }
-*/
+
+- (void)setupUI {
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"Icon"];
+    imageView.backgroundColor = [UIColor blackColor];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [imageView setClipsToBounds:YES];
+    
+    [self addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(30);
+        make.left.offset(150);
+        make.right.offset(-150);
+        make.height.mas_equalTo(200);
+    }];
+
+}
 
 @end

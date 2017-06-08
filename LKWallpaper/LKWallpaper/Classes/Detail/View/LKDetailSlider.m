@@ -26,15 +26,15 @@
     self.minimumTrackTintColor = [UIColor lightGrayColor];
     self.maximumTrackTintColor = [UIColor whiteColor];
     //  给滑块最大值、最小值一边设置图片
-    UIImage *image1 = [UIImage imageNamed:@"More"];
-    UIImage *image2 = [UIImage imageNamed:@"Grid"];
+    UIImage *image1 = [UIImage imageNamed:@"Minus"];
+    UIImage *image2 = [UIImage imageNamed:@"Add"];
     self.minimumValueImage = image1;
     self.maximumValueImage = image2;
     self.maximumValue = 10;
     self.minimumValue = 0;
     //  拖动滑块的过程中持续获取其值变更事件，如果是NO，则只有在滑动停止时才会获取变更事件
     self.continuous = NO;
-    UIImage *image = [self OriginImage:[UIImage imageNamed:@"Grid"] scaleToSize:CGSizeMake(25, 25)];
+    UIImage *image = [UIImage imageNamed:@"Roller"];
     [self setThumbImage:image forState:UIControlStateNormal];
     [self setThumbImage:image forState:UIControlStateHighlighted];
 
