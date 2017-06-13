@@ -55,17 +55,19 @@
     UIViewController *homeViewController = [self loadTabBarWithClassName:@"LKHomeViewController" andImageName:@"Grid" andTitle:@"首页"];
     //  给首页嵌入navbar
     UINavigationController *homeViewNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+//    homeViewNavigationController.navigationBar.hidden = YES;
     //  注释运行你就知道
     homeViewController.edgesForExtendedLayout = UIRectEdgeNone;
     //  隐藏navbar
     [homeViewNavigationController setNavigationBarHidden:YES];
+    
 
 
     //  收藏
     UIViewController *bookmarkViewController = [self loadTabBarWithClassName:@"LKBookmarkViewController" andImageName:@"Bookmark" andTitle:@"收藏"];
     //  给首页嵌入navbar
     UINavigationController *bookmarkViewNavigationController = [[UINavigationController alloc] initWithRootViewController:bookmarkViewController];
-    //
+//    bookmarkViewNavigationController.navigationBar.hidden = YES;
     bookmarkViewController.edgesForExtendedLayout = UIRectEdgeNone;
     [bookmarkViewNavigationController setNavigationBarHidden:YES];
 

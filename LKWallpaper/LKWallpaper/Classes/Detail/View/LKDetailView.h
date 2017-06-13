@@ -14,7 +14,8 @@ typedef enum : NSUInteger {
     LKHomeDetailBtnTypeShare,//    分享
     LKHomeDetailBtnTypeBlurred,//  模糊
     LKHomeDetailBtnTypeInspect,//   预览
-    LKHomeDetailBtnTypeInfo//   预览
+    LKHomeDetailsBtnTypeSweethearts,//  情侣按钮
+    LKHomeDetailBtnTypeInfo//   info
 
 } LKHomeDetailsBtnType;
 

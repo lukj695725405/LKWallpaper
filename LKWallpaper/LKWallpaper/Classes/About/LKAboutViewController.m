@@ -128,7 +128,7 @@ static NSString *kLinkDescription = @"360WP 是一款简单的壁纸App，由人
     [message setThumbImage:[UIImage imageNamed:@"Icon"]];
     
     WXWebpageObject *ext = [WXWebpageObject object];
-    ext.webpageUrl = [NSString stringWithFormat:@"http://www.baidu.com"];
+    ext.webpageUrl = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/360高清壁纸/id1244378418?l=zh&ls=1&mt=8"];
     
     message.mediaObject = ext;
     

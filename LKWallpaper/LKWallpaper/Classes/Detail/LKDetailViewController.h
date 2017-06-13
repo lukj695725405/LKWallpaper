@@ -13,4 +13,7 @@
 
 @property(nonatomic, strong) LKWallpaper *wallpaper;
 
+
+@property(nonatomic, strong) UIImage *image;
+
 @end

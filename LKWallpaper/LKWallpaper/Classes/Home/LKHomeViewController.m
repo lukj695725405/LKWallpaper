@@ -246,6 +246,80 @@ const int PageSize = 10;
     
     
 }
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"did select %zd", indexPath.item);
+//    
+//    NSURL *imageUrl = [NSURL URLWithString:self.data[(NSUInteger) indexPath.row].rawUrl];
+//    
+//    
+//    [[SDWebImageManager sharedManager] diskImageExistsForURL:imageUrl completion:^(BOOL isInCache) {
+//        
+//        if (isInCache) {
+//            [self loadDetailWithIndexPath:indexPath];
+//        } else {
+//            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//            //            hud.activityIndicatorColor = [UIColor whiteColor];
+//            hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.5];
+//            hud.label.textColor = [UIColor whiteColor];
+//            hud.graceTime = 5;
+//            
+//            hud.label.text = NSLocalizedString(@"加载中...", @"Loading...");
+//            [self loadDetailWithIndexPath:indexPath];
+//        }
+//        
+//        
+//    }];
+//    
+//    
+//}
+//
+//
+//- (void)loadDetailWithIndexPath:(NSIndexPath *)indexPath {
+//    
+//    AFNetworkReachabilityManager *afNetworkReachabilityManager = [AFNetworkReachabilityManager sharedManager];
+//    [afNetworkReachabilityManager startMonitoring];  //开启网络监视器；
+//    [afNetworkReachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        switch (status) {
+//            case AFNetworkReachabilityStatusReachableViaWiFi:
+//            case AFNetworkReachabilityStatusReachableViaWWAN: {
+//                [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.data[(NSUInteger) indexPath.row].rawUrl] options:0 progress:nil completed:^(UIImage *_Nullable image, NSData *_Nullable data, NSError *_Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL *_Nullable imageURL) {
+//                    
+//                    if (error) {
+//                        NSLog(@"错误");
+//                        return ;
+//                    }
+//                    
+//                    self.detailsViewController.image = image;
+//                    self.detailsViewController.hidesBottomBarWhenPushed = YES;
+//                    
+//                    [self.navigationController pushViewController:self.detailsViewController animated:YES];
+//                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                }];
+//                break;
+//            }
+//                
+//            case AFNetworkReachabilityStatusNotReachable:
+//            default:
+//            {
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                
+//                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//                hud.label.text = NSLocalizedString(@"无网络", @"Network unavailable");
+//                
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                });
+//                
+//                break;
+//            }
+//        }
+//        
+//        [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+//    }];
+//    
+//    
+//    
+//}
 
 //  MARK:提示窗
 - (void)showMsg:(NSString *)msg duration:(CGFloat)time imgName:(NSString *)imgName {

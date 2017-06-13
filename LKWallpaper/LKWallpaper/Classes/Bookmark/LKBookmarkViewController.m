@@ -136,7 +136,7 @@ static NSString *cellID = @"cellID";
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 //    NSLog(@"did select %zd", indexPath.item);
 //    
-//    NSURL *imageUrl = [NSURL URLWithString:self.data[(NSUInteger) indexPath.row].rawUrl];
+//    NSURL *imageUrl = [NSURL URLWithString:self.tabbarController.collectWallpaperArray[(NSUInteger) indexPath.row].rawUrl];
 //    
 //    
 //    [[SDWebImageManager sharedManager] diskImageExistsForURL:imageUrl completion:^(BOOL isInCache) {
@@ -145,7 +145,7 @@ static NSString *cellID = @"cellID";
 //            [self loadDetailWithIndexPath:indexPath];
 //        } else {
 //            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//            hud.activityIndicatorColor = [UIColor whiteColor];
+////            hud.activityIndicatorColor = [UIColor whiteColor];
 //            hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.5];
 //            hud.label.textColor = [UIColor whiteColor];
 //            hud.graceTime = 5;
@@ -169,12 +169,17 @@ static NSString *cellID = @"cellID";
 //        switch (status) {
 //            case AFNetworkReachabilityStatusReachableViaWiFi:
 //            case AFNetworkReachabilityStatusReachableViaWWAN: {
-//                [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.data[(NSUInteger) indexPath.row].rawUrl] options:0 progress:nil completed:^(UIImage *_Nullable image, NSData *_Nullable data, NSError *_Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL *_Nullable imageURL) {
+//                [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:self.tabbarController.collectWallpaperArray[(NSUInteger) indexPath.row].rawUrl] options:0 progress:nil completed:^(UIImage *_Nullable image, NSData *_Nullable data, NSError *_Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL *_Nullable imageURL) {
 //                    
-//                    self.detailsViewController.image = image;
-//                    self.detailsViewController.hidesBottomBarWhenPushed = YES;
+//                    if (error) {
+//                        NSLog(@"错误");
+//                        return ;
+//                    }
 //                    
-//                    [self.navigationController pushViewController:self.detailsViewController animated:YES];
+//                    self.detailViewController.image = image;
+//                    self.detailViewController.hidesBottomBarWhenPushed = YES;
+//                    
+//                    [self.navigationController pushViewController:self.detailViewController animated:YES];
 //                    [MBProgressHUD hideHUDForView:self.view animated:YES];
 //                }];
 //                break;

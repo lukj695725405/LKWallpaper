@@ -32,6 +32,8 @@
     [self loadBtnWithImageName:@"Save" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeDownLoad];
     //  分享
     [self loadBtnWithImageName:@"Share" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeShare];
+    //  情侣按钮
+    [self loadBtnWithImageName:@"rotation" andLKHomeDetailsBtnType:LKHomeDetailsBtnTypeSweethearts];
     
     [self loadBtnWithImageName:@"Info" andLKHomeDetailsBtnType:LKHomeDetailBtnTypeInfo];
 
@@ -49,10 +51,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    CGFloat btnW = self.frame.size.width / 6;
+   
+    CGFloat btnW = self.frame.size.width / self.subviews.count;
 
     for (int i = 0; i < self.subviews.count; i++) {
-
         UIButton *btn = self.subviews[i];
 
         CGFloat x = btnW * i;
