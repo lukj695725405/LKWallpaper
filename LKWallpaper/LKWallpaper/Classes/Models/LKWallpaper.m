@@ -36,7 +36,8 @@
     [coder encodeObject:self.rawUrl forKey:@"rawUrl"];
     [coder encodeObject:self.userProfileUrl forKey:@"userProfileUrl"];
     [coder encodeBool:self.isCache forKey:@"isCache"];
-    
+    [coder encodeInteger:self.width forKey:@"width"];
+    [coder encodeInteger:self.height forKey:@"height"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -52,7 +53,8 @@
         self.rawUrl = [coder decodeObjectForKey:@"rawUrl"];
         self.userProfileUrl = [coder decodeObjectForKey:@"userProfileUrl"];
         self.isCache = [coder decodeBoolForKey:@"isCache"];
-
+        self.width = [coder decodeIntegerForKey:@"width"];
+        self.height = [coder decodeIntegerForKey:@"height"];
     }
     return self;
 }

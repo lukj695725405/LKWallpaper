@@ -27,6 +27,7 @@
 		255035451EE813000099A13E /* LKAboutHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 255035441EE813000099A13E /* LKAboutHeadView.m */; };
 		255035481EE818D60099A13E /* LKAboutViewLabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 255035471EE818D60099A13E /* LKAboutViewLabCell.m */; };
 		2550354B1EE823180099A13E /* LKAboutViewBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2550354A1EE823180099A13E /* LKAboutViewBtnCell.m */; };
+		256EDA061EFA75D300F8E2E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256EDA051EFA75D300F8E2E0 /* Assets.xcassets */; };
 		2591846D1ED6AF3D00736BCA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2591846A1ED6AF3D00736BCA /* UIImage+ImageEffects.m */; };
 		2591846E1ED6AF3D00736BCA /* UIView+BlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2591846C1ED6AF3D00736BCA /* UIView+BlurredImage.m */; };
 		25E826EF1EE2AAD100F167D9 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E826EA1EE2AAD100F167D9 /* libWeChatSDK.a */; };
@@ -40,7 +41,6 @@
 		25E826FE1EE2ABCB00F167D9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E826FD1EE2ABCB00F167D9 /* CFNetwork.framework */; };
 		25F799151ED1989E004E8361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F799141ED1989E004E8361 /* main.m */; };
 		25F799181ED1989E004E8361 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F799171ED1989E004E8361 /* AppDelegate.m */; };
-		25F799201ED1989E004E8361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F7991F1ED1989E004E8361 /* Assets.xcassets */; };
 		25F799231ED1989E004E8361 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F799211ED1989E004E8361 /* LaunchScreen.storyboard */; };
 		3C2C940B1179E9B380197705 /* libPods-LKWallpaper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE92DA49481ED20191103C4F /* libPods-LKWallpaper.a */; };
 /* End PBXBuildFile section */
@@ -86,6 +86,7 @@
 		255035471EE818D60099A13E /* LKAboutViewLabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAboutViewLabCell.m; sourceTree = "<group>"; };
 		255035491EE823180099A13E /* LKAboutViewBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAboutViewBtnCell.h; sourceTree = "<group>"; };
 		2550354A1EE823180099A13E /* LKAboutViewBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAboutViewBtnCell.m; sourceTree = "<group>"; };
+		256EDA051EFA75D300F8E2E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		259184691ED6AF3D00736BCA /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		2591846A1ED6AF3D00736BCA /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		2591846B1ED6AF3D00736BCA /* UIView+BlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BlurredImage.h"; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		25F799141ED1989E004E8361 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		25F799161ED1989E004E8361 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		25F799171ED1989E004E8361 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		25F7991F1ED1989E004E8361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25F799221ED1989E004E8361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25F799241ED1989E004E8361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43ADA6D14F2893B22AE3BD54 /* Pods-LKWallpaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LKWallpaper.release.xcconfig"; path = "Pods/Target Support Files/Pods-LKWallpaper/Pods-LKWallpaper.release.xcconfig"; sourceTree = "<group>"; };
@@ -324,6 +324,7 @@
 				2509F8771ED19D0D00279F05 /* Classes */,
 				25F799161ED1989E004E8361 /* AppDelegate.h */,
 				25F799171ED1989E004E8361 /* AppDelegate.m */,
+				256EDA051EFA75D300F8E2E0 /* Assets.xcassets */,
 				25F799131ED1989E004E8361 /* Supporting Files */,
 			);
 			path = LKWallpaper;
@@ -332,7 +333,6 @@
 		25F799131ED1989E004E8361 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				25F7991F1ED1989E004E8361 /* Assets.xcassets */,
 				25F799211ED1989E004E8361 /* LaunchScreen.storyboard */,
 				25F799241ED1989E004E8361 /* Info.plist */,
 				25F799141ED1989E004E8361 /* main.m */,
@@ -431,8 +431,8 @@
 			files = (
 				25F799231ED1989E004E8361 /* LaunchScreen.storyboard in Resources */,
 				2509F90B1ED30CB000279F05 /* data.json in Resources */,
+				256EDA061EFA75D300F8E2E0 /* Assets.xcassets in Resources */,
 				25E826F01EE2AAD100F167D9 /* README.txt in Resources */,
-				25F799201ED1989E004E8361 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

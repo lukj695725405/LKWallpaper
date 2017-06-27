@@ -54,7 +54,7 @@ static NSString *cellID = @"cellID";
         make.right.left.bottom.offset(0);
     }];
     //  关闭预加载模式, 防止出现突然出现然后又缩小的效果
-    collectionView.prefetchingEnabled = NO;
+//    collectionView.prefetchingEnabled = NO;
 
     self.collectionView = collectionView;
 

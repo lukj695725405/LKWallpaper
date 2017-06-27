@@ -27,6 +27,7 @@
 @property(nonatomic, strong) AFHTTPSessionManager *networkManager;
 @property(nonatomic, strong) LKDetailViewController *detailsViewController;
 @property(nonatomic, strong) UIImage *placeHolderImage;
+@property(nonatomic, strong) UIButton *bookmarkButton;
 @end
 
 static NSString *cellID = @"cellID";
@@ -81,8 +82,8 @@ const int PageSize = 10;
 //c5f4e014076331726eb0c3379db2cfef0d9ac3a259d27b6fa9f6fe1171bf7c29
 //395005f5b2b2da243b35408e946ff70212a51767673edefc795c95e540231a3f
     [self.networkManager GET:getUrl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-
         NSArray *newData = [NSArray yy_modelArrayWithClass:[LKWallpaper class] json:responseObject];
+        
         [self addData:newData toHeader:addToHeader];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -106,6 +107,7 @@ const int PageSize = 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.data = [[NSArray alloc] init];
     self.idSet = [[NSMutableSet alloc] init];
@@ -163,7 +165,7 @@ const int PageSize = 10;
     self.collectionView = collectionView;
 
     //  关闭预加载模式, 防止出现突然出现然后又缩小的效果
-    collectionView.prefetchingEnabled = NO;
+//    collectionView.prefetchingEnabled = NO;
 
 //    // The pull to refresh
     collectionView.mj_header = [LKRefreshGifHeader headerWithRefreshingBlock:^{
@@ -188,13 +190,12 @@ const int PageSize = 10;
     LKWallpaper *wallpaper = self.data[(NSUInteger) indexPath.item];
 
     LKHomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-
     UIButton *bookmarkButton = [cell viewWithTag:10];
     //  当加载过的cell不会在走这里, 先默认设为false cell复用的解决问题
     bookmarkButton.selected = wallpaper.collected;
     [bookmarkButton addTarget:self action:@selector(clickCollectBtn:) forControlEvents:UIControlEventTouchUpInside];
     bookmarkButton.alpha = 0;
-
+    self.bookmarkButton = bookmarkButton;
     UIImageView *imageView = [cell viewWithTag:20];
 
     [imageView sd_setImageWithURL:[NSURL URLWithString:wallpaper.regularUrl] placeholderImage:self.placeHolderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -343,6 +344,51 @@ const int PageSize = 10;
     hud.removeFromSuperViewOnHide = YES;
     [hud hideAnimated:YES afterDelay:time];
 }
+
+
+- (void)newUserGuide
+{
+    
+    // 这里创建指引在这个视图在window上
+    CGRect frame = [UIScreen mainScreen].bounds;
+    UIView * bgView = [[UIView alloc]initWithFrame:frame];
+    bgView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sureTapClick:)];
+    [bgView addGestureRecognizer:tap];
+    [[UIApplication sharedApplication].keyWindow addSubview:bgView];
+    
+    //create path 重点来了（**这里需要添加第一个路径）
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:frame];
+    // 这里添加第二个路径 （这个是圆）
+    [path appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bookmarkButton.frame.origin.x, self.bookmarkButton.frame.origin.y) radius:30 startAngle:0 endAngle:2 * M_PI clockwise:NO]];
+    
+    // 这里添加第二个路径 （这个是矩形）
+//    [path appendPath:[[UIBezierPath bezierPathWithRoundedRect:CGRectMake(frame.size.width/2.0-1, 234, frame.size.width/2.0+1, 55) cornerRadius:5] bezierPathByReversingPath]];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = path.CGPath;
+    //shapeLayer.strokeColor = [UIColor blueColor].CGColor;
+    [bgView.layer setMask:shapeLayer];
+    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width -300,72,270, 137)];
+    imageView.image = [UIImage imageNamed:@"CouponBoard_guid"];
+    [bgView addSubview:imageView];
+    
+}
+
+
+/**
+ *   新手指引确定
+ */
+- (void)sureTapClick:(UITapGestureRecognizer *)tap
+{
+    UIView * view = tap.view;
+    [view removeFromSuperview];
+    [view removeFromSuperview];
+    [view removeGestureRecognizer:tap];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstCouponBoard_iPhone"];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -24,6 +24,8 @@
 @property(nonatomic, strong) NSString *smallUrl;
 @property(nonatomic, strong) NSString *thumbUrl;
 @property(nonatomic, strong) NSString *userProfileUrl;
+@property(nonatomic, assign) NSInteger height;
+@property(nonatomic, assign) NSInteger width;
 
 @property(nonatomic, assign) BOOL isCache;
 @end

@@ -55,11 +55,11 @@
     UIViewController *homeViewController = [self loadTabBarWithClassName:@"LKHomeViewController" andImageName:@"Grid" andTitle:@"首页"];
     //  给首页嵌入navbar
     UINavigationController *homeViewNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-//    homeViewNavigationController.navigationBar.hidden = YES;
+    homeViewNavigationController.navigationBar.hidden = YES;
     //  注释运行你就知道
     homeViewController.edgesForExtendedLayout = UIRectEdgeNone;
     //  隐藏navbar
-    [homeViewNavigationController setNavigationBarHidden:YES];
+//    [homeViewNavigationController setNavigationBarHidden:YES];
     
 
 
@@ -67,9 +67,9 @@
     UIViewController *bookmarkViewController = [self loadTabBarWithClassName:@"LKBookmarkViewController" andImageName:@"Bookmark" andTitle:@"收藏"];
     //  给首页嵌入navbar
     UINavigationController *bookmarkViewNavigationController = [[UINavigationController alloc] initWithRootViewController:bookmarkViewController];
-//    bookmarkViewNavigationController.navigationBar.hidden = YES;
+    bookmarkViewNavigationController.navigationBar.hidden = YES;
     bookmarkViewController.edgesForExtendedLayout = UIRectEdgeNone;
-    [bookmarkViewNavigationController setNavigationBarHidden:YES];
+//    [bookmarkViewNavigationController setNavigationBarHidden:YES];
 
 
     //  详情
@@ -92,8 +92,8 @@
 
 - (UIViewController *)loadTabBarWithClassName:(NSString *)className andImageName:(NSString *)imageName andTitle:(NSString *)title {
 
-    Class clazz = NSClassFromString(className);
-    UIViewController *vc = (UIViewController *) [[clazz alloc] init];
+    Class class = NSClassFromString(className);
+    UIViewController *vc = (UIViewController *) [[class alloc] init];
     //  设置UITabBar的内间距
     vc.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     //  设置图片以及使用原始图片颜色

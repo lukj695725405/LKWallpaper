@@ -15,13 +15,15 @@
 #import <AFNetworking.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "WXApi.h"
-
+#import "UILabel+LKMomentLabel.h"
 typedef enum : NSUInteger {
     LKCoverLeftBtn = 10,
     LKCoverRightBtn
 } LKCoverBtn;
 
 @interface LKDetailViewController ()
+
+@property(nonatomic, strong) NSString *oldWallpaperId;
 
 @property(nonatomic, strong) UIImageView *imageView;
 @property(nonatomic, strong) UIImage *imageViewImage;
@@ -40,7 +42,6 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) LKInfoWebViewViewController *infoWebViewController;
 @property(nonatomic, strong) LKDetailView *tabBarView;
 @property (nonatomic, strong)MBProgressHUD * hud;
-@property (nonatomic, strong)MBProgressHUD * savePhotoHud;
 //  timer
 @property(nonatomic, strong)NSTimer *timer;
 //  左边的view
@@ -72,6 +73,11 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong)UIButton *rightCoverBtn;
 //  点击下载按钮的标记
 @property(nonatomic, assign)BOOL isDownLoadBtnSelect;
+
+@property(nonatomic, strong)UIView *leftCoverView;
+@property(nonatomic, strong)UIView *rightCoverView;
+@property(nonatomic, strong)UILabel *leftLabel;
+@property(nonatomic, strong)UILabel *rightLabel;
 @end
 
 const int TabbarHeight = 40;
@@ -89,21 +95,41 @@ const int TabbarHeight = 40;
         self.tabBarView.hidden = YES;
     }
     
+    if (![self.oldWallpaperId isEqual: self.wallpaper.wallpaperId]) {
+        [self loadImage:self.wallpaper.fullUrl completion:^(UIImage *image) {
+            self.oldWallpaperId = [self.wallpaper.wallpaperId copy];
+            self.image = image;
+            [self resetViews];
+        }];
+        
+    }else {
+        
+        [self resetViews];
+    }
     
-    [self loadImage:self.wallpaper.fullUrl completion:^(UIImage *image) {
-        self.image = image;
+    if ((float)self.wallpaper.width / self.wallpaper.height < self.screenSize.width * 2 / self.screenSize.height ) {
         
-        CGSize newSize = [self fitSize:self.image.size toSize:self.scrollView.bounds.size];
-        self.imageViewImage = [self resizeImage:self.image toSize:newSize];
-        self.imageView.image = self.imageViewImage;
+        self.sweetheartsBtn.enabled = NO;
         
-        self.imageView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-        self.scrollView.contentSize = newSize;
-        self.scrollView.contentOffset = CGPointZero;
-        self.blurredSlider.value = 0;
-        self.tabBarView.hidden = NO;
-    }];
+    } else {
+        
+        self.sweetheartsBtn.enabled = YES;
+    }
+    
 }
+
+- (void)resetViews {
+    CGSize newSize = [self fitSize:self.image.size toSize:self.scrollView.bounds.size];
+    self.imageViewImage = [self resizeImage:self.image toSize:newSize];
+    self.imageView.image = self.imageViewImage;
+    self.imageView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
+    self.scrollView.contentSize = newSize;
+    self.scrollView.contentOffset = CGPointZero;
+    self.blurredSlider.value = 0;
+    self.tabBarView.hidden = NO;
+    
+}
+
 
 //  MARK:view将要消失的时候
 - (void)viewWillDisappear:(BOOL)animated {
@@ -139,8 +165,13 @@ const int TabbarHeight = 40;
     self.infoBtn.transform = CGAffineTransformIdentity;
     
     self.scrollView.contentInset = UIEdgeInsetsMake(0, self.imageViewOffset, 0, self.imageViewOffset);
-    
     self.scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - TabbarHeight);
+    
+    if (self.image == nil) {
+        self.hud.progress = 0;
+        return;
+    }
+    
     CGSize newSize = [self fitSize:self.image.size toSize:self.scrollView.frame.size];
     
     self.imageViewImage = [self resizeImage:self.image toSize:newSize];
@@ -161,9 +192,7 @@ const int TabbarHeight = 40;
     self.rightInspectImageView.image = nil;
     
     self.middleLine.hidden = YES;
-    self.rightCoverBtn.hidden = YES;
-    self.leftCoverBtn.hidden = YES;
-    
+    self.sharedBtn.enabled = YES;
     
 }
 
@@ -244,16 +273,26 @@ const int TabbarHeight = 40;
     middleLine.backgroundColor = [UIColor redColor];
     self.middleLine = middleLine;
     
+    //  左边的下载View罩层
+    UIView *leftCoverView = [[UIView alloc] init];
+    leftCoverView.backgroundColor = [UIColor blackColor];
+    leftCoverView.alpha = 0;
+    //  右边的下载View罩层
+    UIView *rightCoverView = [[UIView alloc] init];
+    rightCoverView.backgroundColor = [UIColor blackColor];
+    rightCoverView.alpha = 0;
+    
+    UILabel *leftLabel = [UILabel labelWithColor:[UIColor colorWithWhite:1 alpha:0.5] andFont:12 andText:@"分享右侧图片给TA"];
+    UILabel *rightLabel = [UILabel labelWithColor:[UIColor colorWithWhite:1 alpha:0.5] andFont:12 andText:@"分享左侧图片给TA"];
+    
     //  左边的点击下载
     UIButton *leftCoverBtn = [[UIButton alloc]init];
-    leftCoverBtn.backgroundColor = [UIColor blackColor];
     leftCoverBtn.tag = LKCoverLeftBtn;
-    leftCoverBtn.alpha = 0;
+
     //  左边的点击下载
     UIButton *rightCoverBtn = [[UIButton alloc]init];
-    rightCoverBtn.backgroundColor = [UIColor blackColor];
     rightCoverBtn.tag = LKCoverRightBtn;
-    rightCoverBtn.alpha = 0;
+
     [rightCoverBtn addTarget:self action:@selector(clickCoverBtn:) forControlEvents:UIControlEventTouchUpInside];
     [leftCoverBtn addTarget:self action:@selector(clickCoverBtn:) forControlEvents:UIControlEventTouchUpInside];
     //  添加
@@ -266,8 +305,12 @@ const int TabbarHeight = 40;
     [self.view addSubview:rightPaddingView];
     [self.view addSubview:self.blurredSlider];
     [self.view addSubview:middleLine];
-    [self.view addSubview:leftCoverBtn];
-    [self.view addSubview:rightCoverBtn];
+    [self.view addSubview:leftCoverView];
+    [self.view addSubview:rightCoverView];
+    [leftCoverView addSubview:leftCoverBtn];
+    [rightCoverView addSubview:rightCoverBtn];
+    [leftCoverView addSubview:leftLabel];
+    [rightCoverView addSubview:rightLabel];
     //  布局
     [self.tabBarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.offset(0);
@@ -308,6 +351,10 @@ const int TabbarHeight = 40;
     self.infoBtn = infoBtn;
     self.leftCoverBtn = leftCoverBtn;
     self.rightCoverBtn = rightCoverBtn;
+    self.leftCoverView = leftCoverView;
+    self.rightCoverView = rightCoverView;
+    self.leftLabel = leftLabel;
+    self.rightLabel = rightLabel;
 }
 
 
@@ -392,6 +439,7 @@ const int TabbarHeight = 40;
 - (void)cancelWork:(id)sender {
     
     [self.hud hideAnimated:YES];
+    [[SDWebImageManager sharedManager] cancelAll];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -417,21 +465,19 @@ const int TabbarHeight = 40;
     }else {
         
         CGFloat ratio = screenHeight / self.scrollView.bounds.size.height;
-        NSLog(@"%f-%f-%f-%f", self.view.bounds.size.height,self.view.bounds.size.width, self.scrollView.bounds.size.height, self.scrollView.bounds.size.width / 2);
+        
         CGPoint scrollViewOffsetPoint = scrollView.contentOffset;
         CGSize newSize = [self fitSize:self.image.size toSize:self.screenSize];
         UIImage *tempImage = [self resizeImage:self.image toSize:newSize];
         UIGraphicsBeginImageContextWithOptions(self.screenSize, NO, [[UIScreen mainScreen] scale]);
         
         if (tag == LKCoverLeftBtn) {
-            
             //  截取左边的
             [tempImage drawAtPoint:CGPointMake(-scrollViewOffsetPoint.x * ratio, -scrollViewOffsetPoint.y * ratio)];
-            
+   
         }else if(tag == LKCoverRightBtn) {
             //  截取右边的
             [tempImage drawAtPoint:CGPointMake((-scrollViewOffsetPoint.x - self.inspectImageView.bounds.size.width) * ratio, -scrollViewOffsetPoint.y * ratio)];
-            
         }
 
     }
@@ -498,44 +544,61 @@ const int TabbarHeight = 40;
         succeed = true;
     }
 
-
-    if (succeed) {
-        [self showMsg:@"保存成功" duration:1 imgName:@"Bookmark-S"];
-
-
-    } else {
-        [self showMsg:@"保存失败" duration:1 imgName:@"Bookmark"];
+    if (self.isSweetheartsBtnSelect == YES) {
+        
+        if (succeed) {
+            [self showMsg:@"保存成功, 正在分享..." duration:1 imgName:@"Bookmark-S"];
+            
+            
+        } else {
+            [self showMsg:@"保存失败" duration:1 imgName:@"Bookmark"];
+            
+        }
+        
+    }else {
+        
+        if (succeed) {
+            [self showMsg:@"保存成功" duration:1 imgName:@"Bookmark-S"];
+            
+            
+        } else {
+            [self showMsg:@"保存失败" duration:1 imgName:@"Bookmark"];
+            
+        }
 
     }
+
 }
 
 
 //  MARK:提示窗
 - (void)showMsg:(NSString *)msg duration:(CGFloat)time imgName:(NSString *)imgName {
-
-    self.savePhotoHud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    if (self.isSweetheartsBtnSelect == YES) {
+        
+        hud.bezelView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
+    
     //  改变提示窗的颜色
-    self.savePhotoHud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    self.savePhotoHud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.5];
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.5];
     //  提示窗弹出的时候, 修改不能点击屏幕的问题
-    self.savePhotoHud.userInteractionEnabled = NO;
+    hud.userInteractionEnabled = NO;
 
     // 显示模式,改成customView,即显示自定义图片(mode设置,必须写在customView赋值之前)
-    self.savePhotoHud.mode = MBProgressHUDModeCustomView;
+    hud.mode = MBProgressHUDModeCustomView;
 
     // 设置要显示 的自定义的图片
-    self.savePhotoHud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imgName]];
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imgName]];
     // 显示的文字,比如:加载失败...加载中...
-    self.savePhotoHud.label.text = msg;
-    self.savePhotoHud.label.textColor = [UIColor whiteColor];
+    hud.label.text = msg;
+    hud.label.textColor = [UIColor whiteColor];
     // 标志:必须为YES,才可以隐藏,  隐藏的时候从父控件中移除
-    self.savePhotoHud.removeFromSuperViewOnHide = YES;
-    [self.savePhotoHud hideAnimated:YES afterDelay:time];
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hideAnimated:YES afterDelay:time];
 }
-
-
-
-
 
 //  MARK:点击模糊按钮的btn
 - (void)showBlurredSliderWithAnimation:(BOOL)animate {
@@ -665,11 +728,9 @@ const int TabbarHeight = 40;
             //  transform旋转 bounds大小输出不改变, frame大小位置发生改变
             self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, M_PI_2);
             self.scrollView.frame = CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.width / (self.screenSize.height / self.screenSize.width) * 2);
-        
+            NSLog(@"%@", NSStringFromCGSize(self.scrollView.bounds.size));
             CGSize newSize = [self fitSize:self.image.size toSize:self.scrollView.bounds.size];
-
             self.imageViewImage = [self resizeImage:self.image toSize:newSize];
-            self.imageView.image = self.imageViewImage;
             
             self.imageView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
             self.scrollView.contentSize = newSize;
@@ -692,13 +753,7 @@ const int TabbarHeight = 40;
             self.sharedBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
             self.infoBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
             
-//            [UIView animateWithDuration:1.5 animations:^{
-//                self.sharedBtn.alpha = 0;
-//                
-//            } completion:^(BOOL finished) {
-//                
-//                [self.sharedBtn removeFromSuperview];
-//            }];
+            self.sharedBtn.enabled = NO;
             
             
         } completion:^(BOOL finished) {
@@ -709,18 +764,27 @@ const int TabbarHeight = 40;
             self.rightInspectImageView.frame = CGRectMake(0, self.scrollView.frame.origin.y + self.inspectImageView.bounds.size.width, self.view.bounds.size.width, self.scrollView.bounds.size.width / 2);
             //  中间的黑线
             self.middleLine.frame = CGRectMake(0, self.scrollView.frame.origin.y + self.inspectImageView.bounds.size.width, self.view.bounds.size.width, 1);
-            //  左边的下载Btn罩层
-            self.leftCoverBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
-            self.leftCoverBtn.frame = self.inspectImageView.frame;
-            [self.leftCoverBtn setTitle:@"点击左边下载   右边分享" forState:UIControlStateNormal];
-            self.leftCoverBtn.titleLabel.numberOfLines = 0;
-            //  右边的下载Btn罩层
-            self.rightCoverBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
-            self.rightCoverBtn.frame = self.rightInspectImageView.frame;
-            [self.rightCoverBtn setTitle:@"点击右边下载  左边分享" forState:UIControlStateNormal];
-            self.rightCoverBtn.titleLabel.numberOfLines = 0;
-            self.rightCoverBtn.hidden = YES;
-            self.leftCoverBtn.hidden = YES;
+            
+            //  左边的下载View罩层
+            self.leftCoverView.transform = CGAffineTransformMakeRotation(M_PI_2);
+            self.leftCoverView.frame = self.inspectImageView.frame;
+            //  右边的下载View罩层
+            self.rightCoverView.transform = CGAffineTransformMakeRotation(M_PI_2);
+            self.rightCoverView.frame = self.rightInspectImageView.frame;
+            
+//            self.leftLabel.backgroundColor = [UIColor redColor];
+            self.leftLabel.frame = CGRectMake((self.leftCoverView.bounds.size.width - 120) / 2, self.screenSize.width / 2 - 20 , 120, 100);
+            self.leftLabel.textAlignment = NSTextAlignmentCenter;
+            self.rightLabel.frame = CGRectMake((self.rightCoverView.bounds.size.width - 120) / 2, self.screenSize.width / 2 - 20 , 120, 100);
+            self.rightLabel.textAlignment = NSTextAlignmentCenter;
+//            //  左边的下载Btn
+            self.leftCoverBtn.frame = self.leftCoverView.bounds;
+            [self.leftCoverBtn setTitle:@"点击保存到本地" forState:UIControlStateNormal];
+            self.leftCoverBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+//            //  右边的下载Btn
+            self.rightCoverBtn.frame = self.rightCoverView.bounds;
+            [self.rightCoverBtn setTitle:@"点击保存到本地" forState:UIControlStateNormal];
+            self.rightCoverBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         }];
         
        
@@ -744,7 +808,7 @@ const int TabbarHeight = 40;
             CGSize newSize = [self fitSize:self.image.size toSize:self.scrollView.frame.size];
             
             self.imageViewImage = [self resizeImage:self.image toSize:newSize];
-            self.imageView.image = self.imageViewImage;
+
             
             self.imageView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
             self.scrollView.contentSize = newSize;
@@ -754,13 +818,11 @@ const int TabbarHeight = 40;
             
             
             self.inspectImageView.transform = CGAffineTransformIdentity;
-//            //  scrollView上的imageView 预览视图
+            //  scrollView上的imageView 预览视图
             self.inspectImageView.frame = CGRectMake(self.imageViewOffset, 0, self.view.bounds.size.width - 2 * self.imageViewOffset, self.view.bounds.size.height - TabbarHeight);
-            self.rightCoverBtn.hidden = YES;
-            self.leftCoverBtn.hidden = YES;
             self.middleLine.hidden = YES;
             self.rightInspectImageView.hidden = YES;
-            
+            self.sharedBtn.enabled = YES;
         }];
     }
     
@@ -781,12 +843,11 @@ const int TabbarHeight = 40;
         if (self.downLoadBtn.selected == NO && self.isDownLoadBtnSelect == NO) {
             
             self.isDownLoadBtnSelect = YES;
-            self.rightCoverBtn.hidden = NO;
-            self.leftCoverBtn.hidden = NO;
+            
             [UIView animateWithDuration:0.5 animations:^{
-                
-                self.rightCoverBtn.alpha = 0.5;
-                self.leftCoverBtn.alpha = 0.5;
+
+                self.leftCoverView.alpha = 0.5;
+                self.rightCoverView.alpha = 0.5;
                 self.infoBtn.alpha = 0;
                 self.infoBtn.alpha = 0;
                 self.sharedBtn.alpha = 0;
@@ -802,11 +863,9 @@ const int TabbarHeight = 40;
         }else {
             
             self.isDownLoadBtnSelect = NO;
-            self.rightCoverBtn.hidden = YES;
-            self.leftCoverBtn.hidden = YES;
             [UIView animateWithDuration:0.5 animations:^{
-                self.rightCoverBtn.alpha = 0;
-                self.leftCoverBtn.alpha = 0;
+                self.leftCoverView.alpha = 0;
+                self.rightCoverView.alpha = 0;
                 self.infoBtn.alpha = 1;
                 self.infoBtn.alpha = 1;
                 self.sharedBtn.alpha = 1;
@@ -830,59 +889,75 @@ const int TabbarHeight = 40;
 - (void)clickCoverBtn:(UIButton *)sender {
     
     if (sender.tag == LKCoverLeftBtn) {
-        NSLog(@"left");
         UIImage *image = [self captureScrollView:self.scrollView andCoverBtnTag:LKCoverLeftBtn];
         //调用方法
         [self saveImageToPhotos:image];
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            UIImage* sharedImage = [self captureScrollView:self.scrollView andCoverBtnTag:LKCoverRightBtn];
+            
+            WXMediaMessage *message = [WXMediaMessage message];
+            [message setThumbImage:[self imageWithImageSimple:sharedImage scaledToSize:sharedImage.size]];
+            
+            WXImageObject *ext = [WXImageObject object];
+            
+            ext.imageData = UIImagePNGRepresentation(sharedImage);
+            
+            message.mediaObject = ext;
+            
+            SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+            req.bText = NO;
+            req.message = message;
+            req.scene = 0;//0 = 好友列表 1 = 朋友圈 2 = 收藏
+            
+            [WXApi sendReq:req];
+        });
         
-        UIImage* sharedImage = [self captureScrollView:self.scrollView andCoverBtnTag:LKCoverRightBtn];
-        
-        WXMediaMessage *message = [WXMediaMessage message];
-        [message setThumbImage:[self imageWithImageSimple:sharedImage scaledToSize:sharedImage.size]];
-        
-        WXImageObject *ext = [WXImageObject object];
-        
-        ext.imageData = UIImagePNGRepresentation(sharedImage);
-        
-        message.mediaObject = ext;
-        
-        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        req.bText = NO;
-        req.message = message;
-        req.scene = 0;//0 = 好友列表 1 = 朋友圈 2 = 收藏
-        
-        [WXApi sendReq:req];
 
         
         
     }else {
         
-        NSLog(@"right");
         UIImage *image = [self captureScrollView:self.scrollView andCoverBtnTag:LKCoverRightBtn];
         //调用方法
         [self saveImageToPhotos:image];
-        
-        UIImage* sharedImage = [self captureScrollView:self.scrollView andCoverBtnTag:LKCoverLeftBtn];
-        
-        WXMediaMessage *message = [WXMediaMessage message];
-        [message setThumbImage:[self imageWithImageSimple:sharedImage scaledToSize:sharedImage.size]];
-        
-        WXImageObject *ext = [WXImageObject object];
-        
-        ext.imageData = UIImagePNGRepresentation(sharedImage);
-        
-        message.mediaObject = ext;
-        
-        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        req.bText = NO;
-        req.message = message;
-        req.scene = 0;//0 = 好友列表 1 = 朋友圈 2 = 收藏
-        
-        [WXApi sendReq:req];
-
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            UIImage* sharedImage = [self captureScrollView:self.scrollView andCoverBtnTag:LKCoverLeftBtn];
+            
+            WXMediaMessage *message = [WXMediaMessage message];
+            [message setThumbImage:[self imageWithImageSimple:sharedImage scaledToSize:sharedImage.size]];
+            
+            WXImageObject *ext = [WXImageObject object];
+            
+            ext.imageData = UIImagePNGRepresentation(sharedImage);
+            
+            message.mediaObject = ext;
+            
+            SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+            req.bText = NO;
+            req.message = message;
+            req.scene = 0;//0 = 好友列表 1 = 朋友圈 2 = 收藏
+            
+            [WXApi sendReq:req];
+        });
     }
+    
+    self.isDownLoadBtnSelect = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.leftCoverView.alpha = 0;
+        self.rightCoverView.alpha = 0;
+        self.infoBtn.alpha = 1;
+        self.infoBtn.alpha = 1;
+        self.sharedBtn.alpha = 1;
+        self.inspectBtn.alpha = 1;
+        self.popBtn.alpha = 1;
+        self.blurredBtn.alpha = 1;
+        self.sweetheartsBtn.alpha = 1;
+    }];
+
+    
     
 }
 
