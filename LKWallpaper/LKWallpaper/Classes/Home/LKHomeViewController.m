@@ -198,7 +198,7 @@ const int PageSize = 10;
     self.bookmarkButton = bookmarkButton;
     UIImageView *imageView = [cell viewWithTag:20];
 
-    [imageView sd_setImageWithURL:[NSURL URLWithString:wallpaper.regularUrl] placeholderImage:self.placeHolderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [imageView sd_setImageWithURL:[NSURL URLWithString:wallpaper.smallUrl] placeholderImage:self.placeHolderImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if(!error) {
             bookmarkButton.alpha = 1;
         }

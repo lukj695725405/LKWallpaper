@@ -96,7 +96,7 @@ const int TabbarHeight = 40;
     }
     
     if (![self.oldWallpaperId isEqual: self.wallpaper.wallpaperId]) {
-        [self loadImage:self.wallpaper.fullUrl completion:^(UIImage *image) {
+        [self loadImage:self.wallpaper.regularUrl completion:^(UIImage *image) {
             self.oldWallpaperId = [self.wallpaper.wallpaperId copy];
             self.image = image;
             [self resetViews];
