@@ -138,6 +138,8 @@ const int TabbarHeight = 40;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     self.inspectImageView.image = nil;
     [self hideBlurredSliderWithAnimation:NO];
+    [self.hud hideAnimated:YES];
+    [[SDWebImageManager sharedManager] cancelAll];
     
 }
 

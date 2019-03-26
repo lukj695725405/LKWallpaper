@@ -401,7 +401,7 @@
 				TargetAttributes = {
 					25F7990F1ED1989E004E8361 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9CDHN3U854;
+						DevelopmentTeam = N7Z37R3F67;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -625,7 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9CDHN3U854;
+				DEVELOPMENT_TEAM = N7Z37R3F67;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = LKWallpaper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -667,7 +667,7 @@
 					"\"UIKit\"",
 					"\"-Objc -all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.lukj.360wallpaper;
+				PRODUCT_BUNDLE_IDENTIFIER = me.lukj.360lkbwallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -678,7 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9CDHN3U854;
+				DEVELOPMENT_TEAM = N7Z37R3F67;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = LKWallpaper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -720,7 +720,7 @@
 					"\"UIKit\"",
 					"\"-Objc -all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.lukj.360wallpaper;
+				PRODUCT_BUNDLE_IDENTIFIER = me.lukj.360lkbwallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
